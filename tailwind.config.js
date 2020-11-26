@@ -33,7 +33,8 @@ module.exports = {
         'onyx': '#393D3F',
         'new-york-pink': '#CD8987',
         'dark-electric-blue': '#546A7B',
-        'blue-gray': '#6C91BF'
+        'blue-gray': '#6C91BF',
+        'cream': '#efe4cf'
       },
       fontSize: {
         "7xl": "4.5rem",

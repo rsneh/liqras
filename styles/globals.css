@@ -2,6 +2,10 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+body {
+  @apply bg-silver;
+}
+
 a {
   @apply text-primary;
 }

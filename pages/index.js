@@ -1,13 +1,15 @@
-import Image from "next/image"
-import Layout from "components/Layout"
-import LayoutHead from "components/LayoutHead"
-import Button from "components/Button"
+import Image from 'next/image'
+import { useFetchUser } from 'utils/user'
+import Layout from 'components/Layout'
+import LayoutHead from 'components/LayoutHead'
+import Button from 'components/Button'
 
 export default function Home() {
+  const { user, loading } = useFetchUser()
   return (
     <>
       <LayoutHead />
-      <Layout>
+      <Layout user={user} loading={loading}>
         <div className="relative bg-white overflow-hidden">
           <div className="relative max-w-7xl mx-auto z-10">
             <div className="max-w-7xl mx-auto my-10 sm:my-28 lg:my-72">
