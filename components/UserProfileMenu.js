@@ -1,19 +1,26 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 import Menu from 'components/Menu'
 import BellIcon from 'assets/bell-icon.svg'
-import Link from 'next/link'
+import PlusIcon from 'assets/plus-icon.svg'
 
 export default function UserProfileMenu({ user }) {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <div className="hidden md:block z-10">
       <div className="ml-4 flex items-center md:ml-6">
-        <button className="p-1 rounded-full text-gray-500 hover:text-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-dark focus:ring-dark">
+        <button className="p-1 rounded-full text-gray-500 hover:text-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
           <span className="sr-only">View notifications</span>
           <BellIcon className="h-6 w-6" />
         </button>
-        <div className="ml-3 relative">
+        <Link href="/blog/new">
+          <button className="p-1 ml-2 rounded-full text-gray-500 hover:text-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+            <span className="sr-only">New Post</span>
+            <PlusIcon className="h-6 w-6" />
+          </button>
+        </Link>
+        <div className="ml-2 relative">
           <div>
             <button
               onClick={(e) => setIsOpen(prev => !prev)}
@@ -32,9 +39,6 @@ export default function UserProfileMenu({ user }) {
             </button>
           </div>
           <Menu isOpen={isOpen} setIsOpen={setIsOpen}>
-            <Link href="/me">
-              <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
-            </Link>
             <Link href={`/blog/${user?.nickname}/`}>
               <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Blog</a>
             </Link>

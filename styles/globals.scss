@@ -2,8 +2,8 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-body {
-  @apply bg-silver;
+* {
+  box-sizing: border-box;
 }
 
 a {
@@ -18,6 +18,18 @@ span,
 p {
   @apply font-light;
 }
+
+// #__next {
+//   height: 100%;
+// }
+
+// #layout {
+//   min-height: 100%;
+//   display: grid;
+//   grid-template-rows: auto 1fr auto;
+//   grid-template-columns: 100%;
+//   justify-items: center;
+// }
 
 /* Styles for lazy loaded images */
 .blur-up {

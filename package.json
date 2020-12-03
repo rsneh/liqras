@@ -12,10 +12,14 @@
     "@headlessui/react": "^0.2.0",
     "@svgr/webpack": "^5.5.0",
     "@tailwindcss/typography": "^0.2.0",
+    "auth0": "^2.30.0",
     "autoprefixer": "^10.0.2",
     "classnames": "^2.2.6",
+    "contentful": "^7.15.0",
+    "crypto": "^1.0.1",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
+    "match-sorter": "^6.0.1",
     "next": "10.0.1",
     "next-compose-plugins": "^2.2.1",
     "next-plugin-svgr": "^0.0.6",
@@ -23,8 +27,12 @@
     "postcss": "^8.1.9",
     "postcss-preset-env": "^6.7.0",
     "react": "17.0.1",
+    "react-beautiful-dnd": "^13.0.0",
+    "react-contenteditable": "^3.3.5",
     "react-dom": "17.0.1",
+    "sass": "^1.29.0",
     "tailwindcss": "^2.0.1",
+    "uuid": "^8.3.1",
     "webp-loader": "^0.6.0"
   }
 }

@@ -4,16 +4,16 @@ import Header from 'components/Header'
 import Footer from 'components/Footer'
 import { UserProvider } from 'utils/user';
 
-export default function Layout({ user, loading = false, children }) {
+export default function Layout({ user, children, showFooter = true, loading = false }) {
   const { pathname } = useRouter()
   const isHome = pathname === "/"
 
   return (
     <UserProvider value={{ user, loading }}>
-      <div className="antialiased">
+      <div id="layout" className="antialiased">
         <Header isHome={isHome} />
         {children}
-        <Footer />
+        {showFooter && <Footer />}
       </div>
     </UserProvider>
   );

@@ -35,7 +35,7 @@ export default function Home() {
             <Image
               width={3840}
               height={2560}
-              src="/images/background-home2.jpg"
+              src="/images/background-home.jpg"
               style={{ objectFit: 'cover' }}
               layout="responsive"
               alt=""

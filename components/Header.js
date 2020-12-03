@@ -1,4 +1,3 @@
-import cs from 'classnames'
 import Link from 'next/link'
 import { useUser } from 'utils/user'
 import LogoIcon from 'assets/logo-icon.svg'
@@ -6,11 +5,11 @@ import LogoType from 'assets/logo-type.svg'
 import Button from 'components/Button'
 import UserProfileMenu from 'components/UserProfileMenu'
 
-export default function Header({ isHome }) {
+export default function Header() {
   const { user, loading } = useUser()
   return (
-    <div className={cs("relative px-6 mx-auto", { 'bg-white': !isHome })}>
-      <div className="flex justify-between items-center py-2 md:justify-start md:space-x-10">
+    <div className="relative px-6 mx-auto bg-silver">
+      <div className="flex justify-between items-center py-2 md:space-x-10">
         <div className="flex justify-start lg:w-0 lg:flex-1">
           <Link href="/">
             <a className="flex">
