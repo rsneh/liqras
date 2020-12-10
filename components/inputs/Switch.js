@@ -10,7 +10,7 @@ export default function Switch({ label, checked, setChecked, showTooltip = false
       <div
         onMouseEnter={() => setOnHover(true)}
         onMouseLeave={() => setOnHover(false)}
-        className={cs(styles.toggleSwitch, "relative inline-block w-10 mx-2 align-middle select-none transition duration-200 ease-in")}
+        className={cs(styles.toggleSwitch, "relative mr-2 inline-block w-10 align-middle select-none transition duration-200 ease-in")}
       >
         {showTooltip && (
           <Tooltip
@@ -23,13 +23,13 @@ export default function Switch({ label, checked, setChecked, showTooltip = false
           type="checkbox"
           name="toggle"
           id="input-switch"
-          className={cs(styles["input-checkbox"], "input-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none", checked && styles["checked"])}
+          className={cs(styles["input-checkbox"], "absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none", checked && styles["checked"])}
           onClick={(e) => setChecked(e.target.checked)}
         />
         <label htmlFor="input-switch" className={cs(styles["toggle-label"], "block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer")}></label>
       </div>
       {!showTooltip && (
-        <label htmlFor="input-switch" className="text-xs">{label}</label>
+        <label htmlFor="input-switch" className="text-xs cursor-pointer">{label}</label>
       )}
     </div>
   )

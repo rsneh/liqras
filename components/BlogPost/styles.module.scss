@@ -2,13 +2,10 @@
   &.is-rtl {
     direction: rtl;
     .blogActions {
-      text-align: left;
     }
   }
   .blogOptions {
-    @apply mx-2;
   }
   .blogActions {
-    text-align: right;
   }
 }

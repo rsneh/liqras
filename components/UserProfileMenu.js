@@ -39,7 +39,7 @@ export default function UserProfileMenu({ user }) {
             </button>
           </div>
           <Menu isOpen={isOpen} setIsOpen={setIsOpen}>
-            <Link href={`/blog/${user?.nickname}/`}>
+            <Link href={`/blog`}>
               <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Blog</a>
             </Link>
             <Link href="/api/signout">

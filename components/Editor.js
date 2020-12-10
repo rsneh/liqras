@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
 import cs from 'classnames'
+import { useState, useEffect } from 'react'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import { objectId } from 'utils/common'
 import EditableBlock from 'components/EditableBlock'
@@ -9,11 +9,17 @@ import styles from './Editor.module.scss'
 
 export const DEFAULT_BLOCK = { tag: "p", html: "", imageUrl: "" }
 
-export default function Editor({ id, fetchedBlocks, error, isRTL, isNew = false }) {
-  const [blocks, setBlocks] = useState(fetchedBlocks);
-  const [currentBlockId, setCurrentBlockId] = useState(null);
+export default function Editor({ id, fetchedBlocks, error, isRTL, updatePost, isNew = false }) {
+  const [blocks, setBlocks] = useState(fetchedBlocks)
+  const [currentBlockId, setCurrentBlockId] = useState(null)
   const prevBlocks = usePrevious(blocks)
 
+  // Update the database whenever blocks change
+  useEffect(() => {
+    if (prevBlocks && prevBlocks !== blocks) {
+      updatePost(blocks);
+    }
+  }, [blocks, prevBlocks]);
 
   // Handling the cursor and focus on adding and deleting blocks
   useEffect(() => {
@@ -124,7 +130,6 @@ export default function Editor({ id, fetchedBlocks, error, isRTL, isNew = false 
                     tag={block.tag}
                     html={block.html}
                     imageUrl={block.imageUrl}
-                    placeholder={block.placeholder}
                     pageId={id}
                     addBlock={addBlockHandler}
                     deleteBlock={deleteBlockHandler}

@@ -1,22 +1,11 @@
 import { initAuth0 } from '@auth0/nextjs-auth0'
-import { ManagementClient } from 'auth0'
 import config from 'config'
-
-const managementClient = new ManagementClient({
-  domain: config.AUTH0.DOMAIN,
-  clientId: '0Zi7pPTVbUArn9S5DnHwH0OQeu0WhqCX',
-  clientSecret: 'pTQuW1-lgJ7aB418ezIss9jjfcC2aJ1VWmz4OL2NfZtuq7b2nTPrEqrtmAWP6SB7',
-  audience: 'https://rsneh.eu.auth0.com/api/v2/',
-  scope: 'read:users update:users'
-});
-
-export { managementClient }
 
 export default initAuth0({
   domain: config.AUTH0.DOMAIN,
   clientId: config.AUTH0.CLIENT_ID,
   clientSecret: config.AUTH0.CLIENT_SECRET,
-  audience: 'http://liqras.com/api',
+  audience: config.AUTH0.AUDIENCE,
   scope: 'openid profile',
   redirectUri: 'http://localhost:3000/api/callback',
   postLogoutRedirectUri: 'http://localhost:3000/',

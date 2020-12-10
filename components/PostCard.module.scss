@@ -1,0 +1,10 @@
+@import "../styles/variables.scss";
+
+.postCard {
+  &.is-rtl {
+    direction: rtl;
+  }
+  .ltr {
+    direction: ltr;
+  }
+}

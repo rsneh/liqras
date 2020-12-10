@@ -71,9 +71,8 @@ export default class EditableBlock extends React.Component {
     if (!hasPlaceholder) {
       this.setState({
         ...this.state,
-        html: this.props.html,
+        html: this.props.html || "",
         tag: this.props.tag,
-        placeholder: this.props.placeholder,
         imageUrl: this.props.imageUrl,
       });
     }

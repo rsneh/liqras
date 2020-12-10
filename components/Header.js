@@ -33,11 +33,9 @@ export default function Header() {
               <Link href="/api/signin">
                 <a className="whitespace-nowrap text-base font-medium text-dark hover:text-gray-900">Sign in</a>
               </Link>
-              <Button
-                to="/api/signup"
-                label="Sign up"
-                className="ml-8 px-4 py-2"
-              />
+              <Link href="/api/signup">
+                <a className="ml-8 px-4 py-2 items-center justify-center inline-flex text-white text-base whitespace-nowrap border border-transparent rounded bg-primary hover:bg-dark">Sign up</a>
+              </Link>
             </div>
           )
         }

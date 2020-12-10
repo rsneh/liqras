@@ -1,41 +1,9 @@
 import { useState, useEffect } from 'react'
 import { matchSorter } from 'match-sorter'
-
+import { allowedTags } from 'utils/helpers'
 import styles from './TagSelectorMenu.module.scss'
 
 const MENU_HEIGHT = 150
-const allowedTags = [
-  {
-    id: "page-title",
-    tag: "h1",
-    label: "Page Title",
-  },
-  {
-    id: "heading",
-    tag: "h2",
-    label: "Heading",
-  },
-  {
-    id: "subheading",
-    tag: "h3",
-    label: "Subheading",
-  },
-  {
-    id: "paragraph",
-    tag: "p",
-    label: "Paragraph",
-  },
-  {
-    id: "image",
-    tag: "img",
-    label: "Image",
-  },
-  {
-    id: "code",
-    tag: "code",
-    label: "Code",
-  }
-]
 
 export default function TagSelectorMenu({ position, closeMenu, handleSelection }) {
   const [tagList, setTagList] = useState(allowedTags)
