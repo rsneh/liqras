@@ -19,7 +19,7 @@ export default function PostContent({ blocks, showTitle = false, summary = false
       if (showTitle && index > 1) return prevBlock
       if (!showTitle && index > 2) return prevBlock
     }
-    const block = createElement(currentBlock.tag, null, currentBlock.html)
+    const block = createElement(currentBlock.tag, { key: index }, currentBlock.html)
     prevBlock.push(block)
     return prevBlock
   }, [])

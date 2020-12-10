@@ -105,3 +105,12 @@ export function slugify(text) {
     .replace(/^-+/, "")
     .replace(/-+$/, "")
 }
+
+export function calculateReadingTime(words) {
+  const averageWordsPerMinute = 200
+  if (words.length > 0) {
+    const calc = Math.ceil(words.length / averageWordsPerMinute)
+    return calc
+  }
+  return false
+}

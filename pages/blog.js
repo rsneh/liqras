@@ -18,7 +18,7 @@ export default function Blog({ user, blog }) {
         <div className="max-w-4xl mx-auto">
           <div className="flex py-2 my-10">
             <AuthorSidebar user={user} />
-            <Posts posts={posts} />
+            <Posts posts={posts} allowEdit={true} />
           </div>
         </div>
       </Layout>
