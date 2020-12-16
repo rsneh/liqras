@@ -77,7 +77,7 @@ export default function EditBlogPost(props) {
           prevBlocks={prevBlocks}
         />
       </main>
-      <aside className={cs(styles.sideBarContainer, "w-64 flex flex-col h-screen px-4 border-gray-100 bg-gray-50 border-l-2 p-8 justify-between sticky top-16")}>
+      <aside className={cs(styles.sideBarContainer, "w-64 flex flex-col flex-shrink-0 h-screen px-4 border-gray-100 bg-gray-50 border-l-2 p-8 justify-between sticky top-16")}>
         <BlogSidebarComponentWithNoSSR
           styles={styles}
           onPublishPostHandler={onPublishPostHandler}

@@ -53,7 +53,7 @@ export default function PostCard({ blogSlug, post, allowEdit }) {
           )}
         </div>
         <div className={cs("w-full px-4 py-2 overflow-hidden text-sm")}>
-          <PostContent blocks={postContent} first />
+          <PostContent blocks={postContent} summary={true} />
         </div>
         <hr className="border-gray-100" />
         <section className={cs("px-4 py-2 mt-2", styles.ltr)}>

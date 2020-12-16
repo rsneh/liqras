@@ -4,8 +4,8 @@ import LinkedIcon from 'assets/linkedin-icon.svg'
 
 export default function Footer() {
   return (
-    <footer className="relative mt-10">
-      <div className="flex justify-between items-center px-6 py-2 md:space-x-10 border-t">
+    <footer className="relative mt-auto">
+      <div className="flex justify-between items-center bg-gray-50 mt-10  px-6 py-2 md:space-x-10 border-t">
         {/* <div className="bg-silver mt-auto">
         <div className="max-w-6xl m-auto text-gray-800 flex flex-wrap justify-center">
           <div className="p-5 w-48 ">

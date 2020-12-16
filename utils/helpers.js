@@ -83,7 +83,7 @@ export function dateFormat(d, full = false) {
 export function parsePost(blocks, options) {
   let title
   Object.values(blocks).map((block) => {
-    if (!title && block?.tag === 'h1') title = block?.html.trim()
+    if (!title && block?.tag === 'h1') title = block?.html.replace(/(<([^>]+)>)/gi, "").trim()
   })
 
   return {

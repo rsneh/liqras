@@ -10,6 +10,7 @@ import { useFetchUser } from 'utils/user'
 
 export default function PostSlug({ blog, post }) {
   const router = useRouter()
+  const { user, loading } = useFetchUser()
 
   if (router.isFallback) {
     return <div>Loading...</div>
@@ -26,7 +27,6 @@ export default function PostSlug({ blog, post }) {
     )
   }
 
-  const { user, loading } = useFetchUser()
   const { fields: { title: blogTitle, author } } = blog
   const { fields: { title: postTitle } } = post
   const title = `${postTitle} - ${blogTitle}`
@@ -35,9 +35,7 @@ export default function PostSlug({ blog, post }) {
       <LayoutHead title={title} />
       <Layout user={user} loading={loading}>
         <div className="md:w-full md:mx-auto max-w-6xl">
-          <div className="mt-8">
-            <BlogPost post={post} author={author} />
-          </div>
+          <BlogPost post={post} author={author} />
         </div>
       </Layout>
     </BlogContextProvider>

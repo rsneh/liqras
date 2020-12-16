@@ -17,7 +17,7 @@ export default function PostContent({ blocks, showTitle = false, summary = false
     if (!showTitle && currentBlock.tag === 'h1') return prevBlock
     if (summary) {
       if (showTitle && index > 1) return prevBlock
-      if (!showTitle && index > 2) return prevBlock
+      if (!showTitle && index > 4) return prevBlock
     }
     const block = createElement(currentBlock.tag, { key: index }, currentBlock.html)
     prevBlock.push(block)
