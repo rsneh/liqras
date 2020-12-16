@@ -10,10 +10,10 @@ export default function UserProfileMenu({ user }) {
   return (
     <div className="hidden md:block z-10">
       <div className="ml-4 flex items-center md:ml-6">
-        <button className="p-1 rounded-full text-gray-500 hover:text-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+        {/* <button className="p-1 rounded-full text-gray-500 hover:text-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
           <span className="sr-only">View notifications</span>
           <BellIcon className="h-6 w-6" />
-        </button>
+        </button> */}
         <Link href="/blog/new">
           <button className="p-1 ml-2 rounded-full text-gray-500 hover:text-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
             <span className="sr-only">New Post</span>
