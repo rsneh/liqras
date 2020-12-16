@@ -1,13 +1,12 @@
-import SVGOneIcon from 'assets/svg1.svg'
-import SVGTwoIcon from 'assets/svg2.svg'
-import SVGThreeIcon from 'assets/svg3.svg'
-import SVGFourIcon from 'assets/svg4.svg'
-import SVGFiveIcon from 'assets/svg5.svg'
+import FacebookIcon from 'assets/facebook-icon.svg'
+import TwitterIcon from 'assets/twitter-icon.svg'
+import LinkedIcon from 'assets/linkedin-icon.svg'
 
 export default function Footer() {
   return (
-    <>
-      <div className="bg-silver mt-auto">
+    <footer className="relative mt-10">
+      <div className="flex justify-between items-center px-6 py-2 md:space-x-10 border-t">
+        {/* <div className="bg-silver mt-auto">
         <div className="max-w-6xl m-auto text-gray-800 flex flex-wrap justify-center">
           <div className="p-5 w-48 ">
             <div className="text-xs uppercase text-gray-500 font-medium">Home</div>
@@ -34,31 +33,22 @@ export default function Footer() {
             <a className="my-3 block" href="/#">XXX XXXX, Floor 4 San Francisco, CA <span className="text-teal-600 text-xs p-1"></span></a><a className="my-3 block" href="/#">contact@company.com <span className="text-teal-600 text-xs p-1"></span></a>
           </div>
         </div>
-      </div>
-
-      <div className="bg-gray-100 pt-2 ">
-        <div className="flex pb-5 px-3 m-auto pt-5 border-t text-gray-800 text-sm flex-col
-      md:flex-row max-w-6xl">
-          <div className="mt-2">© Copyright 2020. All Rights Reserved.</div>
+      </div> */}
+        <div className="flex flex-1 pb-5 mx-auto pt-5 text-gray-800 text-sm flex-col md:flex-row max-w-6xl">
+          <div className="mt-2">© Copyright {new Date().getFullYear()}. All Rights Reserved.</div>
           <div className="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
             <a href="/#" className="w-6 mx-1">
-              <SVGOneIcon />
+              <TwitterIcon className="fill-current cursor-pointer text-dark hover:text-gray-500" />
             </a>
             <a href="/#" className="w-6 mx-1">
-              <SVGTwoIcon />
+              <FacebookIcon className="fill-current cursor-pointer text-dark hover:text-gray-500" />
             </a>
             <a href="/#" className="w-6 mx-1">
-              <SVGThreeIcon />
-            </a>
-            <a href="/#" className="w-6 mx-1">
-              <SVGFourIcon />
-            </a >
-            <a href="/#" className="w-6 mx-1">
-              <SVGFiveIcon />
+              <LinkedIcon className="fill-current cursor-pointer text-dark hover:text-gray-500" />
             </a>
           </div>
         </div>
       </div>
-    </>
+    </footer>
   )
 }
