@@ -18,7 +18,7 @@ export default function BlogNewPost({ error }) {
     <>
       <LayoutHead title="New Post" />
       <Layout user={user} loading={loading} showFooter={false}>
-        <div className="md:mx-auto max-w-6xl">
+        <div className="md:w-full md:mx-auto max-w-6xl">
           <div className="mt-8">
             {error && (
               <h1>Error creating a new post.</h1>

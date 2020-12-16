@@ -1,0 +1,17 @@
+.blogPostContainer {
+  &.is-rtl {
+    direction: rtl;
+    .blogActions {
+    }
+  }
+  .blogOptions {
+  }
+  .blogActions {
+  }
+  .sideBarContainer {
+    height: calc(100vh - 66px);
+    height: -o-calc(100vh - 66px); /* opera */
+    height: -webkit-calc(100vh - 66px); /* google, safari */
+    height: -moz-calc(100vh - 66px); /* firefox */
+  }
+}

@@ -35,6 +35,38 @@ export function fetchBlogPosts(blogId) {
   })
 }
 
+export function fetchBlogBySlug(slug) {
+  return new Promise((resolve, reject) => {
+    deliveryClient.getEntries({
+      content_type: 'blog',
+      include: 2,
+      'fields.slug': slug
+    })
+      .then((entries) => {
+        const { items } = entries
+        const blog = items?.find(item => item?.fields?.slug === slug) || null
+        resolve({
+          blog
+        })
+      })
+      .catch(reject)
+  })
+}
+
+export function fetchBlogForIndex() {
+  return new Promise((resolve, reject) => {
+    deliveryClient.getEntries({
+      content_type: 'blog',
+      include: 2
+    })
+      .then((entries) => {
+        const blogs = entries?.items?.map(blog => blog.fields)
+        resolve({ blogs })
+      })
+      .catch(reject)
+  })
+}
+
 export function fetchBlogbyId(blogId, preview = false) {
   return new Promise((resolve, reject) => {
     if (preview) {
@@ -99,7 +131,7 @@ export function updatePostById(id, post) {
 export function updatePostFieldById(id, field) {
   const { name, value } = field
   return new Promise((resolve, reject) => {
-    client.getSpace(config.CONTENTFUL.SPACE_ID)
+    managementClient.getSpace(config.CONTENTFUL.SPACE_ID)
       .then((space) => space.getEnvironment('master'))
       .then((environment) => environment.getEntry(id))
       .then((entry) => {
@@ -113,6 +145,17 @@ export function updatePostFieldById(id, field) {
         }
         return entry.update()
       })
+      .then((entry) => resolve(entry))
+      .catch(reject)
+  })
+}
+
+export function publishPostWithId(id) {
+  return new Promise((resolve, reject) => {
+    managementClient.getSpace(config.CONTENTFUL.SPACE_ID)
+      .then((space) => space.getEnvironment('master'))
+      .then((environment) => environment.getEntry(id))
+      .then((entry) => entry.publish())
       .then((entry) => resolve(entry))
       .catch(reject)
   })
@@ -150,8 +193,15 @@ export function attachPostToBlog(blogId, post) {
 
 export function fetchPostPreviewById(postId) {
   return new Promise((resolve, reject) => {
-    previewClient.getEntry(postId)
-      .then((entry) => resolve(entry))
+    managementClient.getSpace(config.CONTENTFUL.SPACE_ID)
+      .then((space) => space.getEnvironment('master'))
+      .then((environment) => environment.getEntry(postId))
+      .then((mangedEntry) => {
+        const { sys } = mangedEntry
+        previewClient.getEntry(postId)
+          .then((entry) => resolve({ ...entry, sys }))
+          .catch(reject)
+      })
       .catch(reject)
   })
 }
@@ -193,7 +243,7 @@ export function updatePostFeatureImageById(id, image) {
       reject({ message: 'Unable to open file.' })
       return
     }
-    client.getSpace(config.CONTENTFUL.SPACE_ID)
+    managementClient.getSpace(config.CONTENTFUL.SPACE_ID)
       .then((space) => space.getEnvironment('master'))
       .then((environment) => environment.createAssetFromFiles({
         fields: {
@@ -210,7 +260,7 @@ export function updatePostFeatureImageById(id, image) {
         }
       }))
       .then((asset) => asset.processForAllLocales())
-      // .then((asset) => asset.publish())
+      .then((asset) => asset.publish())
       .then((result) => {
         // attach asset to post feature image
         const field = {

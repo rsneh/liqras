@@ -52,29 +52,32 @@ export function getSiteMetaData() {
   return SiteConfig.siteMetadata;
 }
 
-export function isDraft(entity) {
-  return !entity.sys.publishedVersion
+export function isDraft(sys) {
+  return !sys.publishedVersion
 }
 
-export function isChanged(entity) {
-  return !!entity.sys.publishedVersion &&
-    entity.sys.version >= entity.sys.publishedVersion + 2
+export function isChanged(sys) {
+  return !!sys.publishedVersion &&
+    sys.version >= sys.publishedVersion + 2
 }
 
-export function isPublished(entity) {
-  return !!entity.sys.publishedVersion &&
-    entity.sys.version == entity.sys.publishedVersion + 1
+export function isPublished(sys) {
+  return !!sys.publishedVersion &&
+    sys.version == sys.publishedVersion + 1
 }
 
-export function isArchived(entity) {
-  return !!entity.sys.archivedVersion
+export function isArchived(sys) {
+  return !!sys.archivedVersion
 }
 
-export function dateFormat(d) {
+export function dateFormat(d, full = false) {
   const year = d.getFullYear()
   const date = d.getDate()
   const monthName = months[d.getMonth()]
-  return `${monthName} ${date}, ${year}`
+  const hours = d.getHours()
+  const minutes = d.getMinutes()
+  return full ? `${monthName} ${date}, ${year} ${hours}:${minutes}`
+    : `${monthName} ${date}, ${year}`
 }
 
 export function parsePost(blocks, options) {
@@ -113,4 +116,10 @@ export function calculateReadingTime(words) {
     return calc
   }
   return false
+}
+
+export function parseFeatureImageSource(featureImage) {
+  if (!featureImage) return ''
+  const { fields: { file } } = featureImage
+  return 'https:' + file?.url
 }

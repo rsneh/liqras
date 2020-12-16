@@ -5,7 +5,8 @@ const nextConfig = {
   images: {
     domains: [
       'localhost',
-      'avatars1.githubusercontent.com'
+      'avatars1.githubusercontent.com',
+      'images.ctfassets.net'
     ],
   }
 };

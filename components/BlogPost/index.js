@@ -1,74 +1,35 @@
-import { useState, useCallback } from 'react'
-import dynamic from 'next/dynamic'
 import cs from 'classnames'
-import { objectId } from 'utils/common'
-import BlogSidebar from 'components/BlogPost/BlogSidebar'
+import BlogPostHeader from './BlogPostHeader'
+import PostContent from 'components/PostContent'
+import { parseFeatureImageSource } from 'utils/helpers'
 import styles from './styles.module.scss'
-import { updatePostOnServer } from 'actions/post'
 
-export const initialBlocks = [{
-  _id: objectId(),
-  html: "Untitled",
-  tag: "h1",
-  imageUrl: ""
-}]
-
-const EditorComponentWithNoSSR = dynamic(() => import('components/Editor'),
-  { ssr: false }
-)
-
-async function submitForm(e) {
-  e.preventDefault()
-
-  const res = await fetch('/api/profile/update', {
-    body: JSON.stringify({
-      hello: 'world'
-    }),
-    headers: {
-      'Content-Type': 'application/json'
+export default function BlogPost({ post, author }) {
+  const {
+    fields: {
+      title,
+      featureImage,
+      options = {},
+      content: postContent
     },
-    method: 'POST'
-  })
-
-  const { error } = await res.json()
-  console.log(error);
-}
-
-export default function BlogPost({ id, post, isNew }) {
-  const [isRTL, setIsRTL] = useState(!!post?.fields?.isRTL)
-  const [loading, setLoading] = useState(false)
-  const fetchedBlocks = post?.fields?.content || initialBlocks
-  const updatePost = useCallback(async (blocks) => {
-    setLoading(true)
-    const options = {
-      isRTL
+    sys: {
+      createdAt
     }
-    const result = await updatePostOnServer(id, blocks, options)
-    if (result) {
-      setLoading(false)
-    }
-  }, [])
-
+  } = post
+  const { isRTL } = options
+  const postFeatureImageSrc = parseFeatureImageSource(featureImage)
   return (
-    <div className={cs(styles.blogPostContainer, "md:flex")}>
-      <main className={cs("mt-5 mx-3 md:mt-0 md:col-span-2 flex-grow", isRTL && styles["is-rtl"])}>
-        <EditorComponentWithNoSSR
-          isNew={isNew}
-          fetchedBlocks={fetchedBlocks}
-          id={id}
-          isRTL={isRTL}
-          updatePost={updatePost}
-        />
-      </main>
-      <aside className="flex flex-col flex-none flex-none w-64 px-4 border-gray-100 bg-gray-50 border-l-2">
-        <BlogSidebar
-          styles={styles}
-          isRTL={isRTL}
-          setIsRTL={setIsRTL}
-          post={post}
-          loading={loading}
-        />
-      </aside>
+    <div className={cs(styles['blog-post'], isRTL && styles['is-rtl'])}>
+      <BlogPostHeader
+        title={title}
+        author={author}
+        createdAt={createdAt}
+        isRTL={isRTL}
+        featureImage={postFeatureImageSrc}
+      />
+      <div className="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
+        <PostContent blocks={postContent} />
+      </div>
     </div>
   )
 }

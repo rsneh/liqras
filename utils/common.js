@@ -19,3 +19,14 @@ export function objectId() {
       .toLowerCase()
   )
 }
+
+export function getLocalStorageValue(key) {
+  const item = typeof window !== 'undefined' && window.localStorage ? window.localStorage.getItem(key) : undefined
+  return item ? JSON.parse(item) : undefined
+}
+
+export function setLocalStorageValue(key, value) {
+  const valueToStore = value instanceof Function ? value(storedValue) : value
+  window.localStorage.setItem(key, JSON.stringify(valueToStore))
+  return valueToStore
+}

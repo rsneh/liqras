@@ -1,5 +1,5 @@
 import cs from 'classnames'
-import { ButtonLoadingIcon } from 'components/Button'
+import { ButtonLoadingIcon } from 'components/Buttons'
 
 export default function ButtonIcon({ className, to, icon, type = 'button', loading = false }) {
   return (

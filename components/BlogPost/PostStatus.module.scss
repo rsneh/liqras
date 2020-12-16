@@ -1,0 +1,15 @@
+.is-draft {
+  @apply text-yellow-600;
+}
+
+.is-changed {
+  @apply text-blue-600;
+}
+
+.is-published {
+  @apply text-green-600;
+}
+
+.is-archived {
+  @apply text-red-600;
+}

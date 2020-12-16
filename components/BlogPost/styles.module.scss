@@ -1,11 +1,12 @@
-.blogPostContainer {
+.blog-post {
   &.is-rtl {
     direction: rtl;
-    .blogActions {
-    }
   }
-  .blogOptions {
-  }
-  .blogActions {
+  h2 {
+    @apply text-2xl;
+    @apply text-gray-800;
+    @apply font-semibold;
+    @apply mb-4;
+    @apply mt-4;
   }
 }

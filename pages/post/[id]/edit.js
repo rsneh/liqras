@@ -2,28 +2,35 @@ import { resetServerContext } from 'react-beautiful-dnd'
 import LayoutHead from 'components/LayoutHead'
 import Layout from 'components/Layout'
 import auth0 from 'utils/auth0'
-import BlogPost from 'components/BlogPost'
+import EditBlogPost from 'components/BlogPost/EditBlogPost'
 import { fetchPostPreviewById } from 'utils/contentful'
+import PostContextProvider from 'context/PostContext'
 
-export default function Post({ user, post, error, loading = false }) {
+export default function PostEdit({ user, post, error, loading = false }) {
   resetServerContext()
-  const { sys } = post
-  const id = sys?.id
   return (
-    <>
+    <PostContextProvider fetchedPost={post}>
       <LayoutHead title="New Post" />
       <Layout user={user} loading={loading} showFooter={false}>
-        <div className="md:mx-auto max-w-6xl">
-          <div className="mt-8">
-            <BlogPost isNew={false} id={id} post={post} />
-          </div>
+        <div className="flex flex-1 md:w-full md:mx-auto max-w-6xl">
+          <EditBlogPost />
         </div>
       </Layout>
-    </>
+    </PostContextProvider>
   )
 }
 
-export const getServerSideProps = async ({ req, query }) => {
+export const getServerSideProps = async ({ req, res, query }) => {
+  const session = await auth0.getSession(req);
+  const user = session?.user || null
+  if (!user) {
+    res.writeHead(302, {
+      Location: '/api/signin'
+    })
+    res.end()
+    return
+  }
+
   resetServerContext()
   const { id } = query
   if (typeof window === 'undefined') {

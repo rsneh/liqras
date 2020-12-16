@@ -9,17 +9,9 @@ import styles from './Editor.module.scss'
 
 export const DEFAULT_BLOCK = { tag: "p", html: "", imageUrl: "" }
 
-export default function Editor({ id, fetchedBlocks, error, isRTL, updatePost, isNew = false }) {
-  const [blocks, setBlocks] = useState(fetchedBlocks)
+export default function Editor({ id, blocks, setBlocks, error, autoSave, isRTL, updatePost }) {
   const [currentBlockId, setCurrentBlockId] = useState(null)
   const prevBlocks = usePrevious(blocks)
-
-  // Update the database whenever blocks change
-  useEffect(() => {
-    if (prevBlocks && prevBlocks !== blocks) {
-      updatePost(blocks);
-    }
-  }, [blocks, prevBlocks]);
 
   // Handling the cursor and focus on adding and deleting blocks
   useEffect(() => {
@@ -46,6 +38,11 @@ export default function Editor({ id, fetchedBlocks, error, isRTL, updatePost, is
       }
     }
   }, [blocks, prevBlocks, currentBlockId]);
+
+  // Update the database whenever blocks change
+  useEffect(() => {
+    if (prevBlocks && prevBlocks !== blocks && autoSave) updatePost()
+  }, [blocks, prevBlocks])
 
   const onDragEndHandler = (result) => {
     const { destination, source } = result;

@@ -3,8 +3,9 @@ import cs from 'classnames'
 import Tooltip from 'components/Tooltip';
 import styles from './styles.module.scss'
 
-export default function Switch({ label, checked, setChecked, showTooltip = false }) {
+export default function Switch({ id, label, checked, setChecked, showTooltip = false }) {
   const [onHover, setOnHover] = useState(false)
+  const handleonChange = (e) => setChecked(e.target.checked)
   return (
     <div className="mb-4">
       <div
@@ -22,14 +23,15 @@ export default function Switch({ label, checked, setChecked, showTooltip = false
         <input
           type="checkbox"
           name="toggle"
-          id="input-switch"
+          id={id}
+          checked={!!checked}
+          onChange={handleonChange}
           className={cs(styles["input-checkbox"], "absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none", checked && styles["checked"])}
-          onClick={(e) => setChecked(e.target.checked)}
         />
-        <label htmlFor="input-switch" className={cs(styles["toggle-label"], "block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer")}></label>
+        <label htmlFor={id} className={cs(styles["toggle-label"], "block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer")}></label>
       </div>
       {!showTooltip && (
-        <label htmlFor="input-switch" className="text-xs cursor-pointer">{label}</label>
+        <label htmlFor={id} className="text-xs cursor-pointer">{label}</label>
       )}
     </div>
   )

@@ -1,28 +1,28 @@
-import { useRouter } from 'next/router'
 import auth0 from 'utils/auth0'
 import { fetchBlogbyId } from 'utils/contentful'
 import { convertAuthorId } from 'utils/helpers'
+import Posts from 'components/Posts'
+import Layout from 'components/Layout'
 import LayoutHead from 'components/LayoutHead'
 import AuthorSidebar from 'components/AuthorSidebar'
-import Layout from 'components/Layout'
-import Posts from 'components/Posts'
+import BlogContextProvider from 'context/BlogContext'
 
 // Show user's blog
 export default function Blog({ user, blog }) {
   const { fields } = blog
   const { title, posts = [] } = fields
   return (
-    <>
+    <BlogContextProvider blog={blog}>
       <LayoutHead title={title} />
       <Layout user={user}>
-        <div className="max-w-4xl mx-auto">
+        <div className="w-full max-w-4xl mx-auto">
           <div className="flex py-2 my-10">
-            <AuthorSidebar user={user} />
+            <AuthorSidebar author={user} />
             <Posts posts={posts} allowEdit={true} />
           </div>
         </div>
       </Layout>
-    </>
+    </BlogContextProvider>
   )
 }
 

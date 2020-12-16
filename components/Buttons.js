@@ -9,18 +9,41 @@ export function ButtonLoadingIcon({ className }) {
   )
 }
 
-export default function Button({ className, label, type = 'button', loading = false }) {
+export function AnchorButton({ label, onClick, colorClass = "text-primary" }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cs(
+        colorClass,
+        "background-transparent font-bold text-xs outline-none focus:outline-none"
+      )}
+      style={{ transition: "all .15s ease" }}
+    >
+      {label}
+    </button>
+  )
+}
+export function Button({
+  className,
+  label,
+  onClick,
+  type = 'button',
+  loading = false,
+  colorClass = "text-white bg-primary hover:bg-dark"
+}) {
   return (
     <button
       type={type}
       disabled={loading}
+      onClick={onClick}
       className={cs(
         "transition ease-in-out duration-150",
         "items-center justify-center inline-flex",
-        "text-white text-base whitespace-nowrap",
+        "text-base whitespace-nowrap",
         "border border-transparent rounded",
-        "bg-primary hover:bg-dark",
         { 'cursor-not-allowed': loading },
+        colorClass,
         className
       )}
     >
