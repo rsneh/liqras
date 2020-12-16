@@ -3,15 +3,13 @@ import { useState, useEffect } from 'react'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import { objectId } from 'utils/common'
 import EditableBlock from 'components/EditableBlock'
-import usePrevious from './hooks/usePrevious'
 import { setCaretToEnd } from 'components/EditableBlock/utils'
 import styles from './Editor.module.scss'
 
 export const DEFAULT_BLOCK = { tag: "p", html: "", imageUrl: "" }
 
-export default function Editor({ id, blocks, setBlocks, error, autoSave, isRTL, updatePost }) {
+export default function Editor({ id, blocks, prevBlocks, setBlocks, error, isRTL }) {
   const [currentBlockId, setCurrentBlockId] = useState(null)
-  const prevBlocks = usePrevious(blocks)
 
   // Handling the cursor and focus on adding and deleting blocks
   useEffect(() => {
@@ -38,11 +36,6 @@ export default function Editor({ id, blocks, setBlocks, error, autoSave, isRTL, 
       }
     }
   }, [blocks, prevBlocks, currentBlockId]);
-
-  // Update the database whenever blocks change
-  useEffect(() => {
-    if (prevBlocks && prevBlocks !== blocks && autoSave) updatePost()
-  }, [blocks, prevBlocks])
 
   const onDragEndHandler = (result) => {
     const { destination, source } = result;

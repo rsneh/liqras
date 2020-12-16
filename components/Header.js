@@ -7,7 +7,7 @@ import UserProfileMenu from 'components/UserProfileMenu'
 export default function Header() {
   const { user, loading } = useUser()
   return (
-    <div className="relative px-6 bg-silver sticky top-0 z-10">
+    <div className="relative px-6 bg-silver sticky top-0 z-20">
       <div className="flex justify-between items-center py-2 md:space-x-10">
         <div className="flex justify-start lg:w-0 lg:flex-1">
           <Link href="/">

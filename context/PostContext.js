@@ -15,12 +15,13 @@ const initialPostState = {
   isRTL: false,
   autoSave: false,
   loading: false,
+  updated: false,
   title: null,
   featureImage: null,
   blocks: initialBlocks
 }
 
-function initializeState(post) {
+export function initializePostState(post) {
   const { sys, fields } = post
   const id = sys?.id
   return {
@@ -38,7 +39,7 @@ function initializeState(post) {
 export const PostContext = createContext()
 
 const PostContextProvider = ({ children, fetchedPost }) => {
-  const [state, dispatch] = useReducer(reducer, fetchedPost, initializeState)
+  const [state, dispatch] = useReducer(reducer, fetchedPost, initializePostState)
   return (
     <PostContext.Provider value={{ state, dispatch }}>
       {children}

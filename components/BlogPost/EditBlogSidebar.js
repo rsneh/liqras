@@ -32,7 +32,7 @@ export default function EditBlogSidebar({ styles, onSavePostHandler, onPublishPo
 
   const onClickSaveButton = (e) => {
     e.preventDefault()
-    onSavePostHandler(id)
+    onSavePostHandler()
   }
 
   const lastUpdatedAt = sys?.updatedAt && new Date(sys.updatedAt)
@@ -64,6 +64,7 @@ export default function EditBlogSidebar({ styles, onSavePostHandler, onPublishPo
         <Switch
           id="post-input-autosave"
           label="Autosave"
+          disabled={true}
           checked={autoSave}
           setChecked={(checked) => dispatch({ type: POST_SET_AUTOSAVE, payload: checked })}
         />

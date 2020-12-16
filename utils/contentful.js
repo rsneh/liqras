@@ -123,7 +123,12 @@ export function updatePostById(id, post) {
         }
         return entry.update()
       })
-      .then((entry) => resolve(entry))
+      .then((mangedEntry) => {
+        const { sys } = mangedEntry
+        previewClient.getEntry(id)
+          .then((entry) => resolve({ ...entry, sys }))
+          .catch(reject)
+      })
       .catch(reject)
   })
 }
@@ -156,7 +161,12 @@ export function publishPostWithId(id) {
       .then((space) => space.getEnvironment('master'))
       .then((environment) => environment.getEntry(id))
       .then((entry) => entry.publish())
-      .then((entry) => resolve(entry))
+      .then((mangedEntry) => {
+        const { sys } = mangedEntry
+        previewClient.getEntry(id)
+          .then((entry) => resolve({ ...entry, sys }))
+          .catch(reject)
+      })
       .catch(reject)
   })
 }

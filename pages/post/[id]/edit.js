@@ -10,7 +10,7 @@ export default function PostEdit({ user, post, error, loading = false }) {
   resetServerContext()
   return (
     <PostContextProvider fetchedPost={post}>
-      <LayoutHead title="New Post" />
+      <LayoutHead title={post?.fields?.title || "New Post"} />
       <Layout user={user} loading={loading} showFooter={false}>
         <div className="flex flex-1 md:w-full md:mx-auto max-w-6xl">
           <EditBlogPost />

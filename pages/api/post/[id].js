@@ -1,13 +1,16 @@
 import { updatePostById } from 'utils/contentful'
 import { parsePost } from 'utils/helpers'
 
-async function updatePostBlocks(id, blocks, options) {
+function updatePostBlocks(id, blocks, options) {
   const post = parsePost(blocks, options)
-  const result = await updatePostById(id, post)
-  return result?.sys
+  return new Promise((resolve, reject) => {
+    updatePostById(id, post)
+      .then(result => resolve(result))
+      .catch(reject)
+  })
 }
 
-export default function postHandler(req, res) {
+export default async function postHandler(req, res) {
   const {
     query: { id },
     body: { blocks, options },
@@ -20,8 +23,10 @@ export default function postHandler(req, res) {
       res.status(200).json({ id, name: `User ${id}` })
       break
     case 'PUT':
-      const updateResult = updatePostBlocks(id, blocks, options)
-      res.status(200).json(updateResult)
+      const putResult = await updatePostBlocks(id, blocks, options)
+      if (putResult) {
+        res.status(200).json(putResult)
+      }
       break
     default:
       res.setHeader('Allow', ['GET', 'PUT'])

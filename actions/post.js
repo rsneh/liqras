@@ -1,6 +1,4 @@
 export function updatePostOnServer(id, blocks, options) {
-  console.log('show blocks before saving...')
-  console.log(blocks)
   const body = JSON.stringify({
     blocks,
     options

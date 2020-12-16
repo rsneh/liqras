@@ -1,4 +1,4 @@
-import { dateFormat } from "utils/helpers";
+import { dateFormat } from 'utils/helpers';
 
 export default function DateDifference({ date }) {
   const now = new Date()
@@ -13,12 +13,15 @@ export default function DateDifference({ date }) {
   const minutes = Math.floor(diffInMilliSeconds / 60) % 60
   diffInMilliSeconds -= minutes * 60
 
+  const seconds = parseInt(diffInMilliSeconds % 60).toFixed(0)
+
   let difference = ''
   if (days > 0) difference += (days === 1) ? `${days} day, ` : `${days} days, `
-  difference += (hours === 0 || hours === 1) ? `${hours} hour, ` : `${hours} hours, `
-  difference += (minutes === 0 || hours === 1) ? `${minutes} minutes` : `${minutes} minutes`
+  if (hours > 0) difference += (hours === 0 || hours === 1) ? `${hours} hour, ` : `${hours} hours, `
+  if (minutes > 0) difference += (minutes === 0 || hours === 1) ? `${minutes} minutes` : `${minutes} minutes `
+  if (hours < 1) difference += (seconds === 0 || seconds === 1) ? `${seconds} second` : `${seconds} seconds`
 
   return (
-    <span title={dateFormat(date, true)}>{difference}</span>
+    <span title={dateFormat(date, true)}>{difference}{` ago`}</span>
   )
 }
