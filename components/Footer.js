@@ -5,7 +5,7 @@ import LinkedIcon from 'assets/linkedin-icon.svg'
 export default function Footer() {
   return (
     <footer className="relative mt-auto">
-      <div className="flex justify-between items-center bg-gray-50 mt-10  px-6 py-2 md:space-x-10 border-t">
+      <div className="flex justify-between items-center bg-gray-50 mt-10 px-6 py-2 md:space-x-10 border-t">
         {/* <div className="bg-silver mt-auto">
         <div className="max-w-6xl m-auto text-gray-800 flex flex-wrap justify-center">
           <div className="p-5 w-48 ">
@@ -34,7 +34,7 @@ export default function Footer() {
           </div>
         </div>
       </div> */}
-        <div className="flex flex-1 pb-5 mx-auto pt-5 text-gray-800 text-sm flex-col md:flex-row max-w-6xl">
+        <div className="flex flex-1 flex-col flex-col-reverse items-center max-w-6xl mx-auto text-gray-800 text-sm md:flex-row md:p-5">
           <div className="mt-2">© Copyright {new Date().getFullYear()}. All Rights Reserved.</div>
           <div className="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
             <a href="/#" className="w-6 mx-1">

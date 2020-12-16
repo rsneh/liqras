@@ -1,10 +1,13 @@
 import Link from 'next/link'
+import cs from 'classnames'
+import { useState } from 'react'
 import { useUser } from 'utils/user'
 import LogoIcon from 'assets/logo-icon.svg'
 import LogoType from 'assets/logo-type.svg'
 import UserProfileMenu from 'components/UserProfileMenu'
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false)
   const { user, loading } = useUser()
   return (
     <div className="relative px-6 bg-silver sticky top-0 z-20">
@@ -18,7 +21,11 @@ export default function Header() {
           </Link>
         </div>
         <div className="-mr-2 -my-2 md:hidden">
-          <button type="button" className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+          <button
+            type="button"
+            onClick={() => setIsOpen(prev => !prev)}
+            className="rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+          >
             <span className="sr-only">Open menu</span>
             <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -38,6 +45,16 @@ export default function Header() {
             </div>
           )
         }
+      </div>
+      <div className={cs("md:hidden", isOpen ? "block" : "hidden")}>
+        <div className="px-2 pt-4 pb-3 space-y-1 sm:px-3">
+          <Link href="/api/signup">
+            <a className="bg-primary block border border-transparent px-4 py-2 rounded text-white text-center">Sign up</a>
+          </Link>
+          <Link href="/api/signin">
+            <a className="block border border-transparent px-4 py-2 rounded text-dark text-center">Sign in</a>
+          </Link>
+        </div>
       </div>
     </div>
   );
