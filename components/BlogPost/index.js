@@ -1,8 +1,13 @@
 import cs from 'classnames'
+import dynamic from 'next/dynamic'
 import BlogPostHeader from './BlogPostHeader'
 import PostContent from 'components/PostContent'
 import { parseFeatureImageSource } from 'utils/helpers'
 import styles from './styles.module.scss'
+
+const HebrewLanguageAdjustments = dynamic(() => import('components/HebrewLanguageAdjustments'),
+  { ssr: false }
+)
 
 export default function BlogPost({ post, author }) {
   const {
@@ -19,7 +24,10 @@ export default function BlogPost({ post, author }) {
   const { isRTL } = options
   const postFeatureImageSrc = parseFeatureImageSource(featureImage)
   return (
-    <div className={cs(styles['blog-post'], isRTL && styles['is-rtl'])}>
+    <div className={cs(styles['blog-post'], isRTL && styles['heb'], isRTL && styles['is-rtl'])}>
+      {isRTL && (
+        <HebrewLanguageAdjustments />
+      )}
       <BlogPostHeader
         title={title}
         author={author}
@@ -27,7 +35,7 @@ export default function BlogPost({ post, author }) {
         isRTL={isRTL}
         featureImage={postFeatureImageSrc}
       />
-      <div className="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
+      <div className={cs(styles['content-container'], "px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed")}>
         <PostContent blocks={postContent} />
       </div>
     </div>

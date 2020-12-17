@@ -30,7 +30,7 @@ export default function BlogPostHeader({ title, author, featureImage, createdAt,
                 className="rounded-full object-cover"
               />
             )}
-            <div className={`text-gray-200 m${isRTL ? 'r' : 'l'}-2`}>
+            <div className={`font-sans text-gray-200 m${isRTL ? 'r' : 'l'}-2`}>
               <p className="font-semibold text-sm">{name}</p>
               <p className="font-semibold text-xs">{dateFormat(new Date(createdAt))}</p>
             </div>
