@@ -37,11 +37,11 @@ export default function Footer({ isHome }) {
         <div className="flex flex-1 flex-col flex-col-reverse items-center max-w-6xl mx-auto text-gray-400 text-sm md:flex-row md:p-5">
           <div className="mt-2">© Copyright {new Date().getFullYear()}. All Rights Reserved.</div>
           <div className="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
-            <a href="https://twitter.com/ronsneh" target="_blank" rel="noopener noreferrer" className="w-6 mx-1">
-              <TwitterIcon className="fill-current cursor-pointer text-gray-400 hover:text-gray-500" />
-            </a>
-            <a href="https://github.com/rsneh/liqras" target="_blank" rel="noopener noreferrer" className="w-6 mx-1">
+            <a href="https://github.com/rsneh/liqras" target="_blank" rel="noopener noreferrer" className="w-6 mx-1" title="GitHub">
               <GithubIcon className="fill-current cursor-pointer text-gray-400 hover:text-gray-500" />
+            </a>
+            <a href="https://twitter.com/ronsneh" target="_blank" rel="noopener noreferrer" className="w-6 mx-1" title="Twitter">
+              <TwitterIcon className="fill-current cursor-pointer text-gray-400 hover:text-gray-500" />
             </a>
           </div>
         </div>

@@ -5,6 +5,7 @@ import DefaultErrorPage from 'next/error'
 import { useFetchUser } from 'utils/user'
 import BlogPost from 'components/BlogPost'
 import LayoutHead from 'components/LayoutHead'
+import PageLoading from 'components/PageLoading'
 import { parsePostDescription } from 'utils/helpers'
 import BlogContextProvider from 'context/BlogContext'
 import { fetchBlogBySlug, fetchBlogForIndex } from 'utils/contentful'
@@ -14,7 +15,7 @@ export default function PostSlug({ blog, post }) {
   const { user, loading } = useFetchUser()
 
   if (router.isFallback) {
-    return <div>Loading...</div>
+    return <PageLoading />
   }
 
   if (!blog || !post) {

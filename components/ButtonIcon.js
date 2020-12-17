@@ -1,5 +1,5 @@
 import cs from 'classnames'
-import { ButtonLoadingIcon } from 'components/Buttons'
+import LoadingIcon from 'components/LoadingIcon'
 
 export default function ButtonIcon({ className, to, icon, type = 'button', loading = false }) {
   return (
@@ -17,7 +17,7 @@ export default function ButtonIcon({ className, to, icon, type = 'button', loadi
         className
       )}
     >
-      {loading && <ButtonLoadingIcon className="animate-spin -ml-1 mr-3 h-5 w-5" />}
+      {loading && <LoadingIcon className="animate-spin -ml-1 mr-3 h-5 w-5" />}
       {icon}
     </button>
   )

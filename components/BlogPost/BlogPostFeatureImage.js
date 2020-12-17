@@ -1,7 +1,8 @@
 import cs from 'classnames'
 import { useState, useRef } from 'react'
 import { uploadFeatureImageToServer } from 'actions/post'
-import { AnchorButton, ButtonLoadingIcon } from 'components/Buttons'
+import { AnchorButton } from 'components/Buttons'
+import LoadingIcon from 'components/LoadingIcon'
 import UploadFileIcon from 'assets/upload-file-icon.svg'
 import { parseFeatureImageSource } from 'utils/helpers'
 import Modal from 'components/Modal'
@@ -54,7 +55,7 @@ export default function BlogPostFeatureImage({ postId, image }) {
           className={cs("px-4 py-2 bg-white rounded-lg shadow-lg border border-blue cursor-pointer", loading ? "bg-primary text-white cursor-not-allowed" : "hover:bg-primary hover:text-white")}
         >
           {loading ? (
-            <ButtonLoadingIcon className="w-5 h-5" />
+            <LoadingIcon className="w-5 h-5" />
           ) : (
               <UploadFileIcon className="w-5 h-5" />
             )}
