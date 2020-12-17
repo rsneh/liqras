@@ -18,7 +18,7 @@ export default function SubscribeFormSection() {
     const { error, message } = result
     setResponse({
       success: !error,
-      message
+      message: error ? error : message
     })
     if (!error) emailInputRef.current.value = ''
   }
