@@ -1,4 +1,5 @@
 export default {
+  WEBSITE: 'https://liqras.com',
   AUTH0: {
     DOMAIN: process.env.AUTH0_DOMAIN,
     CLIENT_ID: process.env.AUTH0_CLIENT_ID,
