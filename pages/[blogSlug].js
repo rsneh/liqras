@@ -1,27 +1,23 @@
 import Head from 'next/head'
-import DefaultErrorPage from 'next/error'
-import { useRouter } from 'next/router'
 import Posts from 'components/Posts'
 import Layout from 'components/Layout'
+import { useRouter } from 'next/router'
+import Page404 from 'pages/404'
 import LayoutHead from 'components/LayoutHead'
-import { fetchBlogBySlug, fetchBlogForIndex } from 'utils/contentful'
+import PageLoading from 'components/PageLoading'
 import AuthorSidebar from 'components/AuthorSidebar'
 import BlogContextProvider from 'context/BlogContext'
+import { fetchBlogBySlug, fetchBlogForIndex } from 'utils/contentful'
 
 export default function BlogSlug({ blog }) {
   const router = useRouter()
   if (router.isFallback) {
-    return <div>Loading...</div>
+    return <PageLoading />
   }
 
   if (!blog) {
     return (
-      <>
-        <Head>
-          <meta name="robots" content="noindex" />
-        </Head>
-        <DefaultErrorPage statusCode={404} />
-      </>
+      <Page404 statusCode={404} />
     )
   }
 

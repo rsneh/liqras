@@ -9,7 +9,7 @@ import EditBlogPostSlug from 'components/BlogPost/EditBlogPostSlug'
 import { isPublished } from 'utils/helpers'
 import { PostContext } from 'context/PostContext'
 import { POST_SET_AUTOSAVE, POST_SET_RTL } from 'actions/postReducer'
-import SavingLoader from './SavingLoader'
+import SavingLoader from 'components/SavingLoader'
 
 export default function EditBlogSidebar({ styles, setSlug, onSavePostHandler, onPublishPostHandler }) {
   const {
@@ -82,7 +82,9 @@ export default function EditBlogSidebar({ styles, setSlug, onSavePostHandler, on
         )}
         <div className={cs(styles.blogActions, "w-full flex justify-between py-2")}>
           {loading ? (
-            <SavingLoader />
+            <div className="flex flex-1 items-center px-5 py-2">
+              <SavingLoader />
+            </div>
           ) : (
               <>
                 <div className="block">

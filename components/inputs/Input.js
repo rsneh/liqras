@@ -2,20 +2,45 @@ import { useRef, useState } from 'react'
 import cs from 'classnames'
 import styles from './Input.module.scss'
 
+export function InputSolid({
+  id,
+  name,
+  type = 'text',
+  required = false,
+  placeholder = '',
+  onChange = undefined,
+  innerRef = undefined,
+  defaultValue = undefined
+}) {
+  return (
+    <input
+      id={id}
+      type={type}
+      name={name}
+      ref={innerRef}
+      required={required}
+      onChange={onChange}
+      placeholder={placeholder}
+      value={defaultValue}
+      className="w-full px-2 py-4 mr-2  bg-gray-100 shadow-inner rounded-md border border-gray-400 focus:outline-none"
+    />
+  )
+}
+
 export default function Input({
   id,
   label,
-  onChange,
   type = 'text',
   helpText = '',
   placeholder = '',
-  defaultValue = ''
+  onChange = undefined,
+  defaultValue = undefined
 }) {
   const [filled, setFilled] = useState(false)
   const inputElem = useRef()
   const onKeyUpHandler = ({ target }) => target?.value !== '' ? setFilled(true) : setFilled(false)
   const onClickLabelHandler = () => inputElem.current.focus()
-  const isFilled = filled || !!defaultValue
+  const isFilled = filled || (!!defaultValue || !!placeholder)
   return (
     <div className={styles['input-container']}>
       <div className="mb-4 relative">
