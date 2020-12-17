@@ -22,7 +22,7 @@ export default function Home() {
                   <span className="block inline">Welcome to</span>
                   <span className="block font-bold inline ml-2">Liqras!</span>
                 </h1>
-                <p className="mt-3 font-bold text-dark sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-2xl">
+                <p className="mt-3 font-medium text-dark sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-2xl">
                   The place where thoughts become <span className="font-black">Words</span>
                 </p>
                 <div className="mx-auto mt-8 flex justify-center">
