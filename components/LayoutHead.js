@@ -49,8 +49,9 @@ export default function LayoutHead({ title, description = "", image = null }) {
           <meta name="twitter:creator" content="@ronsneh" />
         </>
       )}
-      <link rel="icon" type="image/png" href="/favicon.ico" />
+      <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       <link rel="apple-touch-icon" href="/favicon.ico" />
+      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     </Head>
   )
 }
