@@ -16,7 +16,7 @@ export default function Header() {
           <Link href="/">
             <a className="flex">
               <LogoIcon width={50} height={50} className="mr-2" />
-              <LogoType width={70} />
+              <LogoType width={70} height={50} />
             </a>
           </Link>
         </div>
