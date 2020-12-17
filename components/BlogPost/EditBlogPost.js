@@ -5,7 +5,7 @@ import styles from './EditBlogPost.module.scss'
 import { PostContext } from 'context/PostContext'
 import usePrevious from 'components/hooks/usePrevious'
 import { updatePostOnServer, publishPostWithId } from 'actions/post'
-import { POST_SET_LOADING, POST_SET_RESULT, POST_SET_BLOCKS, POST_SET_UPDATED } from 'actions/postReducer'
+import { POST_SET_LOADING, POST_SET_RESULT, POST_SET_BLOCKS, POST_SET_UPDATED, POST_SET_SLUG } from 'actions/postReducer'
 
 const EditorComponentWithNoSSR = dynamic(() => import('components/Editor'),
   { ssr: false }
@@ -21,16 +21,18 @@ export default function EditBlogPost(props) {
     dispatch,
     state: {
       id,
+      slug,
       isRTL,
-      autoSave,
       blocks,
+      loading,
       updated,
-      loading
+      autoSave
     }
   } = useContext(PostContext)
 
   const prevBlocks = usePrevious(blocks)
   const setLoading = (payload) => dispatch({ type: POST_SET_LOADING, payload })
+  const setSlug = (payload) => dispatch({ type: POST_SET_SLUG, payload })
   const setBlocks = (payload) => dispatch({ type: POST_SET_BLOCKS, payload })
 
   const onPublishPostHandler = async (id) => {
@@ -46,7 +48,7 @@ export default function EditBlogPost(props) {
     const options = {
       isRTL
     }
-    const result = await updatePostOnServer(id, blocks, options)
+    const result = await updatePostOnServer(id, blocks, slug, options)
     if (result) {
       dispatch({ type: POST_SET_RESULT, payload: result })
     }
@@ -80,8 +82,9 @@ export default function EditBlogPost(props) {
       <aside className={cs(styles.sideBarContainer, "w-64 flex flex-col flex-shrink-0 h-screen px-4 border-gray-100 bg-gray-50 border-l-2 p-8 justify-between sticky top-16")}>
         <BlogSidebarComponentWithNoSSR
           styles={styles}
-          onPublishPostHandler={onPublishPostHandler}
           onSavePostHandler={updatePost}
+          setSlug={setSlug}
+          onPublishPostHandler={onPublishPostHandler}
         />
       </aside>
     </div>

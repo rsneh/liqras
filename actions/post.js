@@ -1,6 +1,7 @@
-export function updatePostOnServer(id, blocks, options) {
+export function updatePostOnServer(id, blocks, slug, options) {
   const body = JSON.stringify({
     blocks,
+    slug,
     options
   })
   return new Promise((resolve, reject) => {

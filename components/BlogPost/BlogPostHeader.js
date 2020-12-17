@@ -16,7 +16,7 @@ export default function BlogPostHeader({ title, author, featureImage, createdAt,
           className="absolute left-0 top-0 w-full h-full z-0 object-cover"
         />
       )}
-      <div className={cs("p-4 w-full absolute bottom-0 z-20", isRTL ? 'right-0' : 'left-0')}>
+      <div className={cs("p-4 w-full absolute bottom-0 z-10", isRTL ? 'right-0' : 'left-0')}>
         <div className="max-w-screen-md mx-auto">
           <h1 className="text-4xl font-semibold text-gray-100 leading-tight">
             {title}

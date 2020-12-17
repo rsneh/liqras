@@ -89,7 +89,7 @@ export function updatePostById(id, post) {
       .then((environment) => environment.getEntry(id))
       .then((entry) => {
         const { title, blocks, options } = post
-        const slug = slugify(title)
+        const slug = post?.slug || slugify(title)
         if ('title' in entry.fields) {
           entry.fields.title['en-US'] = title
         } else {

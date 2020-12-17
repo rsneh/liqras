@@ -110,7 +110,8 @@ export default function Home() {
               </dl>
             </div>
           </div>
-        </div><div className="py-12 bg-white">
+        </div>
+        <div className="bg-gray-900 bg-opacity-60 py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <p className="mt-2 text-2xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-3xl">Publish your content, in your language to the world</p>

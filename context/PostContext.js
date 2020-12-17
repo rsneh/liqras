@@ -17,6 +17,7 @@ const initialPostState = {
   loading: false,
   updated: false,
   title: null,
+  slug: null,
   featureImage: null,
   blocks: initialBlocks
 }
@@ -30,6 +31,7 @@ export function initializePostState(post) {
     sys,
     isRTL: fields?.options?.isRTL,
     title: fields?.title,
+    slug: fields?.slug,
     autoSave: getLocalStorageValue('postAutoSave'),
     featureImage: fields?.featureImage,
     blocks: fields?.content,

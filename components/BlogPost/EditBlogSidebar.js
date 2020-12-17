@@ -5,12 +5,13 @@ import { Button } from 'components/Buttons'
 import DateDifference from 'components/DateDifference'
 import BlogPostFeatureImage from 'components/BlogPost/BlogPostFeatureImage'
 import PostStatus from 'components/BlogPost/PostStatus'
+import EditBlogPostSlug from 'components/BlogPost/EditBlogPostSlug'
 import { isPublished } from 'utils/helpers'
 import { PostContext } from 'context/PostContext'
 import { POST_SET_AUTOSAVE, POST_SET_RTL } from 'actions/postReducer'
 import SavingLoader from './SavingLoader'
 
-export default function EditBlogSidebar({ styles, onSavePostHandler, onPublishPostHandler }) {
+export default function EditBlogSidebar({ styles, setSlug, onSavePostHandler, onPublishPostHandler }) {
   const {
     dispatch,
     state: {
@@ -18,6 +19,7 @@ export default function EditBlogSidebar({ styles, onSavePostHandler, onPublishPo
       sys,
       loading,
       isRTL,
+      slug,
       autoSave,
       featureImage
     }
@@ -40,7 +42,7 @@ export default function EditBlogSidebar({ styles, onSavePostHandler, onPublishPo
     <div className="flex flex-col flex-1 items-start justify-between">
       <div className={cs(styles.blogOptions, "w-full")}>
         <dl>
-          <div className="px-4 pb-5 sm:grid sm:grid-cols-2 sm:gap-2 sm:px-0">
+          <div className="px-4 pb-2 sm:grid sm:grid-cols-2 sm:gap-2 sm:px-0">
             <dt className="text-sm font-medium text-gray-500">
               Status
             </dt>
@@ -55,6 +57,9 @@ export default function EditBlogSidebar({ styles, onSavePostHandler, onPublishPo
             </dd>
           </div>
         </dl>
+        <div className="px-4 pb-5 sm:px-0">
+          <EditBlogPostSlug postId={sys?.id} slug={slug} setSlug={setSlug} />
+        </div>
         <Switch
           id="post-input-rtl"
           label="Right-To-Left"

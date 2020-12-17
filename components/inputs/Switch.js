@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import cs from 'classnames'
 import Tooltip from 'components/Tooltip';
-import styles from './styles.module.scss'
+import styles from './Switch.module.scss'
 
 export default function Switch({ id, label, checked, setChecked, disabled = false, showTooltip = false }) {
   const [onHover, setOnHover] = useState(false)

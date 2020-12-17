@@ -37,6 +37,7 @@ export default function BlogPostFeatureImage({ postId, image }) {
       {imageSource && (
         <div className="mr-1">
           <Modal
+            size="lg"
             title={'Feature Image'}
             button={<AnchorButton label="Preview" />}
           >

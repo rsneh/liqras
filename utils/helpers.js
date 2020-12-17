@@ -80,7 +80,7 @@ export function dateFormat(d, full = false) {
     : `${monthName} ${date}, ${year}`
 }
 
-export function parsePost(blocks, options) {
+export function parsePost(blocks, slug, options) {
   let title
   Object.values(blocks).map((block) => {
     if (!title && block?.tag === 'h1') title = block?.html.replace(/(<([^>]+)>)/gi, "").trim()
@@ -88,6 +88,7 @@ export function parsePost(blocks, options) {
 
   return {
     title,
+    slug,
     blocks,
     options
   }

@@ -12,7 +12,7 @@ export default function Layout({ user, children, showFooter = true, loading = fa
       <div id="layout" className="flex flex-col min-h-screen antialiased">
         <Header isHome={isHome} />
         {children}
-        {showFooter && <Footer />}
+        {showFooter && <Footer isHome={isHome} />}
       </div>
     </UserProvider>
   );

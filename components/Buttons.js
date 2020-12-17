@@ -9,12 +9,13 @@ export function ButtonLoadingIcon({ className }) {
   )
 }
 
-export function AnchorButton({ label, onClick, colorClass = "text-primary" }) {
+export function AnchorButton({ label, onClick, className, colorClass = "text-primary" }) {
   return (
     <button
       type="button"
       onClick={onClick}
       className={cs(
+        className,
         colorClass,
         "background-transparent font-bold text-xs outline-none focus:outline-none"
       )}

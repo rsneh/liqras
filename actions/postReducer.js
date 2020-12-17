@@ -7,6 +7,7 @@ export const POST_SET_AUTOSAVE = 'POST_SET_AUTOSAVE'
 export const POST_SET_RESULT = 'POST_SET_RESULT'
 export const POST_SET_BLOCKS = 'POST_SET_BLOCKS'
 export const POST_SET_UPDATED = 'POST_SET_UPDATED'
+export const POST_SET_SLUG = 'POST_SET_SLUG'
 
 export default function reducer(state, action) {
   const { type, payload } = action
@@ -40,6 +41,11 @@ export default function reducer(state, action) {
       return {
         ...state,
         updated: false
+      }
+    case POST_SET_SLUG:
+      return {
+        ...state,
+        slug: payload
       }
     default:
       throw new Error()
