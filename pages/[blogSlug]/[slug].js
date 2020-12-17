@@ -1,12 +1,13 @@
 import Head from 'next/head'
-import DefaultErrorPage from 'next/error'
-import { useRouter } from 'next/router'
 import Layout from 'components/Layout'
-import LayoutHead from 'components/LayoutHead'
-import { fetchBlogBySlug, fetchBlogForIndex } from 'utils/contentful'
-import BlogContextProvider from 'context/BlogContext'
-import BlogPost from 'components/BlogPost'
+import { useRouter } from 'next/router'
+import DefaultErrorPage from 'next/error'
 import { useFetchUser } from 'utils/user'
+import BlogPost from 'components/BlogPost'
+import LayoutHead from 'components/LayoutHead'
+import { parsePostDescription } from 'utils/helpers'
+import BlogContextProvider from 'context/BlogContext'
+import { fetchBlogBySlug, fetchBlogForIndex } from 'utils/contentful'
 
 export default function PostSlug({ blog, post }) {
   const router = useRouter()
@@ -28,11 +29,13 @@ export default function PostSlug({ blog, post }) {
   }
 
   const { fields: { title: blogTitle, author } } = blog
-  const { fields: { title: postTitle } } = post
+  const { fields: { title: postTitle, content: blocks } } = post
   const title = `${postTitle} - ${blogTitle}`
+  const description = parsePostDescription(blocks)
+
   return (
     <BlogContextProvider blog={blog}>
-      <LayoutHead title={title} />
+      <LayoutHead title={title} description={description} />
       <Layout user={user} loading={loading}>
         <div className="md:w-full md:mx-auto max-w-6xl">
           <BlogPost post={post} author={author} />
@@ -76,6 +79,8 @@ export async function getStaticProps({ params }) {
       notFound: true
     }
   }
+
+  //TODO: check for redirects
 
   return {
     props: {

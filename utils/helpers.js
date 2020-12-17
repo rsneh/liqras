@@ -94,6 +94,11 @@ export function parsePost(blocks, slug, options) {
   }
 }
 
+export function parsePostDescription(blocks) {
+  const h2Block = blocks.find((currentBlock) => currentBlock.tag === 'h2')
+  return h2Block?.html
+}
+
 export function convertAuthorId(userId) {
   return Buffer.from(userId).toString('hex')
 }
