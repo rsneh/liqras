@@ -7,8 +7,8 @@ export default initAuth0({
   clientSecret: config.AUTH0.CLIENT_SECRET,
   audience: config.AUTH0.AUDIENCE,
   scope: 'openid profile',
-  redirectUri: 'http://localhost:3000/api/callback',
-  postLogoutRedirectUri: 'http://localhost:3000/',
+  redirectUri: config.AUTH0.CALLBACK_URL,
+  postLogoutRedirectUri: config.AUTH0.LOGOUT_REDIRECT,
   session: {
     // The secret used to encrypt the cookie.
     cookieSecret: config.AUTH0.COOKIE_SECRET,

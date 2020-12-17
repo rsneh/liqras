@@ -4,7 +4,9 @@ export default {
     CLIENT_ID: process.env.AUTH0_CLIENT_ID,
     CLIENT_SECRET: process.env.AUTH0_CLIENT_SECRET,
     COOKIE_SECRET: process.env.AUTH0_COOKIE_SECRET,
-    AUDIENCE: process.env.AUTH0_AUDIENCE
+    AUDIENCE: process.env.AUTH0_AUDIENCE,
+    CALLBACK_URL: process.env.AUTH0_CALLBACK_URL,
+    LOGOUT_REDIRECT: process.env.AUTH0_LOGOUT_REDIRECT
   },
   CRYPTO: {
     SECRET_KEY: process.env.CRYPTO_SECRET_KEY
