@@ -4,7 +4,7 @@ export default {
     author: {
       name: "Ron Sneh"
     },
-    description: "The place where thoughts become Words",
+    description: "Write your thoughts into words in your native language and publish them to the rest of the world.",
     language: "en-US",
   },
 }
