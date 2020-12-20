@@ -34,8 +34,8 @@ export default function LayoutHead({ title, description = "", image = null }) {
       {/** Image */}
       {image && (
         <>
-          <meta property="og:image" content={`https:${image}`} />
-          <meta name="twitter:image" content={`https:${image}`} />
+          <meta property="og:image" content={`https:${image}?w=1200&h=627&fm=jpg&q=50`} />
+          <meta name="twitter:image" content={`https:${image}?w=1200&h=627&fm=jpg&q=50`} />
         </>
       )}
       {/** Twitter section */}
