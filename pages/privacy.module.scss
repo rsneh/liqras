@@ -1,0 +1,10 @@
+@import "../styles/variables.scss";
+
+.privacy-page {
+  h1 {
+    @apply mb-5;
+  }
+  p {
+    @apply my-1;
+  }
+}
