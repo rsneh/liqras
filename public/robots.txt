@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /_next/static/
 Disallow: /blog
+Disallow: /api
