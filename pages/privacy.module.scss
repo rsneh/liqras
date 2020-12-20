@@ -1,6 +1,8 @@
 @import "../styles/variables.scss";
 
 .privacy-page {
+  @apply text-justify;
+  @apply max-w-2xl;
   h1 {
     @apply mb-5;
   }
