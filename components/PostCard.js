@@ -30,27 +30,27 @@ export default function PostCard({ blogSlug, post, allowEdit }) {
           </div>
         )}
         <div className="flex justify-between">
-          <div className="flex flex-col justify-center flex-1 px-4 py-2">
+          <div className="flex-1 p-4 pb-0">
+            {allowEdit && (
+              <div className="float-left">
+                <Link href={`/post/${postId}/edit`}>
+                  <a>
+                    <EditIcon className="text-primary h-4 w-4" />
+                  </a>
+                </Link>
+              </div>
+            )}
             {title && (
               <Link href={postHref} className="hover:underline">
-                <a className="text-2xl font-bold tracking-normal text-gray-800">
-                  <h2>{title}</h2>
+                <a>
+                  <h2 className="tracking-wider sm:leading-normal">{title}</h2>
                 </a>
               </Link>
             )}
             {sys?.createdAt && (
-              <div className="text-xs text-gray-600">{dateFormat(new Date(sys.createdAt))}</div>
+              <div className="text-xs leading-loose text-gray-600">{dateFormat(new Date(sys.createdAt))}</div>
             )}
           </div>
-          {allowEdit && (
-            <div className="flex items-center px-4">
-              <Link href={`/post/${postId}/edit`}>
-                <a>
-                  <EditIcon className="text-primary h-4 w-4" />
-                </a>
-              </Link>
-            </div>
-          )}
         </div>
         <div className={cs("w-full px-4 py-2 overflow-hidden text-sm")}>
           <PostContent blocks={postContent} summary={true} />
