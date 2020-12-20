@@ -16,17 +16,17 @@ export default function PostCard({ blogSlug, post, allowEdit }) {
   const postHref = `/${blogSlug}/${postSlug}-${postId}`
   const postFeatureImageSrc = parseFeatureImageSource(featureImage)
   return (
-    <div className={cs(styles.postCard, "transition-all duration-150 flex flex-col w-full px-4", isRTL && styles['is-rtl'])}>
-      <div className="flex flex-col items-stretch min-h-full pb-4 transition-all duration-150 bg-white rounded-lg shadow-lg hover:shadow-2xl">
+    <div className={cs(styles.postCard, "transition-all duration-150 flex flex-col w-full sm:px-4", isRTL && styles['is-rtl'])}>
+      <div className="flex flex-col items-stretch min-h-full pb-4 transition-all duration-150 bg-white shadow-lg sm:rounded-lg hover:shadow-2xl">
         {postFeatureImageSrc && (
           <div className="relative">
             <Image
               layout="fill"
               src={postFeatureImageSrc}
               alt="Post Cover"
-              className="object-center object-cover pointer-events-none rounded-lg rounded-b-none z-0 md:h-56"
+              className="object-center object-cover pointer-events-none rounded-b-none z-0 sm:rounded-lg"
             />
-            <div className="lg:h-44"></div>
+            <div className="h-56"></div>
           </div>
         )}
         <div className="flex justify-between">

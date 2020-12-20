@@ -27,7 +27,7 @@ export default function BlogSlug({ blog }) {
       <LayoutHead title={title} />
       <Layout>
         <div className="w-full max-w-4xl mx-auto">
-          <div className="flex flex-row-reverse py-2 my-10">
+          <div className="flex flex-col py-2 my-10 sm:flex-row-reverse">
             <AuthorSidebar author={author} />
             <Posts />
           </div>

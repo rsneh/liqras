@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function AuthorSidebar({ author }) {
   const { name, picture } = author
   return (
-    <div className="w-28 mx-10 flex flex-col flex-shrink-0 items-center">
+    <div className="flex flex-shrink-0 px-2 pb-4 border-b sm:px-0 sm:pb-0 sm:flex-col sm:items-center sm:w-1/4 sm:border-b-0">
       <div className="overflow-hidden">
         {picture && (
           <Image
@@ -15,7 +15,9 @@ export default function AuthorSidebar({ author }) {
           />
         )}
       </div>
-      <h3 className="text-lg text-gray-800 font-medium py-2 ml-3">{name}</h3>
+      <div className="py-2 ml-3 flex-1 sm:ml-0 sm:text-center">
+        <h3 className="text-2xl text-gray-800 font-bold">{name}</h3>
+      </div>
     </div>
   )
 }

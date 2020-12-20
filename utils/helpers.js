@@ -17,18 +17,18 @@ const months = [
 
 export const allowedTags = [
   {
-    id: "page-title",
+    id: "post-title",
     tag: "h1",
-    label: "Page Title",
+    label: "Post Title",
   },
   {
     id: "heading",
-    tag: "h2",
+    tag: "h3",
     label: "Heading",
   },
   {
     id: "subheading",
-    tag: "h3",
+    tag: "h4",
     label: "Subheading",
   },
   {
@@ -95,8 +95,8 @@ export function parsePost(blocks, slug, options) {
 }
 
 export function parsePostDescription(blocks) {
-  const h2Block = blocks.find((currentBlock) => currentBlock.tag === 'h2')
-  return h2Block?.html
+  const h3Block = blocks.find((currentBlock) => currentBlock.tag === 'h3')
+  return h3Block?.html
 }
 
 export function convertAuthorId(userId) {
