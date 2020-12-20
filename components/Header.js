@@ -15,6 +15,7 @@ export default function Header() {
         <div className="flex justify-start lg:w-0 lg:flex-1">
           <Link href="/">
             <a className="flex">
+              <span className="sr-only">Home</span>
               <LogoIcon width={50} height={50} className="mr-2" />
               <LogoType width={70} height={50} />
             </a>
@@ -40,7 +41,7 @@ export default function Header() {
                 <a className="whitespace-nowrap text-base font-medium text-dark hover:text-gray-900">Sign in</a>
               </Link>
               <Link href="/api/signup">
-                <a className="ml-8 px-4 py-2 items-center justify-center inline-flex text-white text-base whitespace-nowrap border border-transparent rounded bg-primary hover:bg-dark">Sign up</a>
+                <a className="ml-8 px-4 py-2 items-center justify-center inline-flex text-white text-base font-bold whitespace-nowrap border border-transparent rounded bg-primary hover:bg-dark">Sign up</a>
               </Link>
             </div>
           )

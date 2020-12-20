@@ -43,7 +43,7 @@ export default function BlogPostFeatureImage({ postId, image }) {
             button={<AnchorButton label="Preview" />}
           >
             <Image
-              src={imageSource}
+              src={`${imageSource}?fm=jpg&fl=progressive`}
               layout="fill"
             />
             <div className="h-full"></div>
