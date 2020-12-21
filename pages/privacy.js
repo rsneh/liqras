@@ -8,7 +8,7 @@ export default function Privacy() {
     <>
       <LayoutHead title={title} />
       <Layout>
-        <div className="w-full max-w-4xl mx-auto">
+        <div className="w-full max-w-2xl mx-auto">
           <div className="flex mx-5 my-10">
             <div className={styles['privacy-page']}>
               <h1>Privacy Policy</h1>
