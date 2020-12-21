@@ -38,7 +38,7 @@ export default function Header() {
         ) : (
             <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
               <a href="/api/signin" className="whitespace-nowrap text-base font-medium text-dark hover:text-gray-900">Sign in</a>
-              <a href="/api/signup" className="ml-8 px-4 py-2 items-center justify-center inline-flex text-white text-base font-bold whitespace-nowrap border border-transparent rounded bg-primary hover:bg-dark">Sign up</a>
+              <a href="/api/signup" className="ml-8 px-4 py-2 items-center justify-center inline-flex text-gray-800 font-medium whitespace-nowrap border border-transparent rounded bg-primary hover:bg-cream">Sign up</a>
             </div>
           )
         }
