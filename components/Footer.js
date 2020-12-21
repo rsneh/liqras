@@ -46,7 +46,7 @@ export default function Footer({ isHome }) {
                 <TwitterIcon className={cs("fill-current cursor-pointer", isHome ? 'text-white hover:opacity-80' : 'text-gray-400 hover:text-gray-500')} />
               </a>
               <Link href="/privacy">
-                <a className="text-xs mx-2 px-2 text-gray-500 border-r">Privacy</a>
+                <a className={cs("text-xs mx-2 px-2 border-r", isHome ? 'text-gray-100' : 'text-gray-500')}>Privacy</a>
               </Link>
             </div>
           </div>
