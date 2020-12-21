@@ -36,16 +36,16 @@ export const allowedTags = [
     tag: "p",
     label: "Paragraph",
   },
-  {
-    id: "image",
-    tag: "img",
-    label: "Image",
-  },
-  {
-    id: "code",
-    tag: "code",
-    label: "Code",
-  }
+  // {
+  //   id: "image",
+  //   tag: "img",
+  //   label: "Image",
+  // },
+  // {
+  //   id: "code",
+  //   tag: "code",
+  //   label: "Code",
+  // }
 ]
 
 export function getSiteMetaData() {
