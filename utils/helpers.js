@@ -99,6 +99,10 @@ export function parsePostDescription(blocks) {
   return h3Block?.html
 }
 
+export function parseProfile(data) {
+  return data
+}
+
 export function convertAuthorId(userId) {
   return Buffer.from(userId).toString('hex')
 }

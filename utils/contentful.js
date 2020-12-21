@@ -290,3 +290,26 @@ export function updatePostFeatureImageById(id, image) {
       .catch(reject)
   })
 }
+
+export function updateBlogAuthorById(blogId, author) {
+  return new Promise((resolve, reject) => {
+    managementClient.getSpace(config.CONTENTFUL.SPACE_ID)
+      .then((space) => space.getEnvironment('master'))
+      .then((environment) => environment.getEntry(blogId))
+      .then((entry) => {
+        if ('author' in entry.fields) {
+          const entryAuthorPost = entry?.fields?.author['en-US']
+          if (!entryAuthorPost) reject({ error: 'Can not find Author field.' })
+          entry.fields.author['en-US'] = {
+            ...entryAuthorPost,
+            ...author
+          }
+          entry.update()
+        } else {
+          reject({ error: 'Author is not set.' })
+        }
+        resolve(entry)
+      })
+      .catch(reject)
+  })
+}

@@ -6,8 +6,11 @@ export function InputSolid({
   id,
   name,
   type = 'text',
+  rounded = true,
+  className = '',
   required = false,
   placeholder = '',
+  bgColorClass = '',
   onChange = undefined,
   innerRef = undefined,
   defaultValue = undefined
@@ -21,8 +24,8 @@ export function InputSolid({
       required={required}
       onChange={onChange}
       placeholder={placeholder}
-      value={defaultValue}
-      className="w-full px-2 py-4 mr-2  bg-gray-100 shadow-inner rounded-md border border-gray-400 focus:outline-none"
+      defaultValue={defaultValue}
+      className={cs("w-full shadow-inner focus:outline-none", bgColorClass, className, { 'rounded-md': rounded })}
     />
   )
 }
