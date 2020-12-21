@@ -35,18 +35,18 @@ export default function Footer({ isHome }) {
           </div>
         </div>
       </div> */}
-        <div className="flex flex-1 flex-col flex-col-reverse items-center max-w-6xl mx-auto  text-sm md:flex-row md:p-5">
+        <div className="flex flex-1 flex-col flex-col-reverse items-center max-w-6xl mx-auto text-gray-800 text-sm md:flex-row md:p-5">
           <div className="mt-2">© Copyright {new Date().getFullYear()}. All Rights Reserved.</div>
           <div className="mt-2 flex-1">
             <div className="md:flex-auto md:flex-row-reverse flex-row flex items-center">
               <a href="https://github.com/rsneh/liqras" target="_blank" rel="noopener noreferrer" className="w-6 mx-1" title="GitHub">
-                <GithubIcon className={cs("fill-current cursor-pointer", isHome ? 'text-white hover:opacity-80' : 'text-gray-400 hover:text-gray-500')} />
+                <GithubIcon className={cs("fill-current cursor-pointer", isHome ? 'text-gray-700 hover:opacity-80' : 'text-gray-400 hover:opacity-80')} />
               </a>
               <a href="https://twitter.com/ronsneh" target="_blank" rel="noopener noreferrer" className="w-6 mx-1" title="Twitter">
-                <TwitterIcon className={cs("fill-current cursor-pointer", isHome ? 'text-white hover:opacity-80' : 'text-gray-400 hover:text-gray-500')} />
+                <TwitterIcon className={cs("fill-current cursor-pointer", isHome ? 'text-gray-700 hover:opacity-80' : 'text-gray-400 hover:opacity-80')} />
               </a>
               <Link href="/privacy">
-                <a className={cs("text-xs mx-2 px-2 border-r", isHome ? 'text-gray-100' : 'text-gray-500')}>Privacy</a>
+                <a className="text-gray-800 hover:opacity-80 text-xs mx-2 px-2 border-r border-gray-700">Privacy</a>
               </Link>
             </div>
           </div>
