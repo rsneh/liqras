@@ -9,7 +9,7 @@ export default function PageLoading() {
           <LogoIcon width={50} height={50} className="absolute mx-auto mt-6 top-1/2" />
         </div>
         <LoadingIcon />
-        <p className="text-sm text-center text-black my-2">Loading page<br />Please wait</p>
+        <p className="text-sm text-center text-black my-2">Loading...<br />Please wait</p>
       </div>
     </div>
   )

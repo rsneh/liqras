@@ -133,3 +133,11 @@ export function parseFeatureImageSource(featureImage) {
   const { fields: { file } } = featureImage
   return 'https:' + file?.url
 }
+
+export function parseWebsite(website) {
+  let websiteUrl = website ? new URL(website) : undefined
+  if (websiteUrl) {
+    return [websiteUrl.origin, websiteUrl.origin.replace(websiteUrl.protocol + '//', '')]
+  }
+  return [website, website]
+} 

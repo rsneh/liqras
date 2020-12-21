@@ -29,7 +29,7 @@ export default function PostSlug({ blog, post }) {
     )
   }
 
-  const { fields: { title: blogTitle, author } } = blog
+  const { fields: { title: blogTitle, slug: blogSlug, author } } = blog
   const { fields: { title: postTitle, content: blocks, featureImage } } = post
   const title = `${postTitle} - ${blogTitle}`
   const description = parsePostDescription(blocks)
@@ -39,7 +39,7 @@ export default function PostSlug({ blog, post }) {
       <LayoutHead title={title} description={description} image={featureImageUrl} />
       <Layout user={user} loading={loading}>
         <div className="md:w-full md:mx-auto max-w-6xl">
-          <BlogPost post={post} author={author} />
+          <BlogPost post={post} author={author} blogSlug={blogSlug} />
         </div>
       </Layout>
     </BlogContextProvider>

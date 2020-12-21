@@ -10,14 +10,14 @@ import BlogContextProvider from 'context/BlogContext'
 // Show user's blog
 export default function Blog({ user, blog }) {
   const { fields } = blog
-  const { title, posts = [] } = fields
+  const { title, author, posts = [] } = fields
   return (
     <BlogContextProvider blog={blog}>
       <LayoutHead title={title} />
       <Layout user={user}>
         <div className="w-full max-w-4xl mx-auto">
           <div className="flex flex-col py-2 my-10 sm:flex-row">
-            <AuthorSidebar author={user} />
+            <AuthorSidebar author={author} />
             <Posts posts={posts} allowEdit={true} />
           </div>
         </div>

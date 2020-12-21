@@ -305,6 +305,7 @@ export function updateBlogAuthorById(blogId, author) {
             ...author
           }
           entry.update()
+          entry.publish()
         } else {
           reject({ error: 'Author is not set.' })
         }
