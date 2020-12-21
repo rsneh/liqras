@@ -37,24 +37,16 @@ export default function Header() {
           <UserProfileMenu user={user} />
         ) : (
             <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-              <Link href="/api/signin">
-                <a className="whitespace-nowrap text-base font-medium text-dark hover:text-gray-900">Sign in</a>
-              </Link>
-              <Link href="/api/signup">
-                <a className="ml-8 px-4 py-2 items-center justify-center inline-flex text-white text-base font-bold whitespace-nowrap border border-transparent rounded bg-primary hover:bg-dark">Sign up</a>
-              </Link>
+              <a href="/api/signin" className="whitespace-nowrap text-base font-medium text-dark hover:text-gray-900">Sign in</a>
+              <a href="/api/signup" className="ml-8 px-4 py-2 items-center justify-center inline-flex text-white text-base font-bold whitespace-nowrap border border-transparent rounded bg-primary hover:bg-dark">Sign up</a>
             </div>
           )
         }
       </div>
       <div className={cs("md:hidden", isOpen ? "block" : "hidden")}>
         <div className="px-2 pt-4 pb-3 space-y-1 sm:px-3">
-          <Link href="/api/signup">
-            <a className="bg-primary block border border-transparent px-4 py-2 rounded text-white text-center">Sign up</a>
-          </Link>
-          <Link href="/api/signin">
-            <a className="block border border-transparent px-4 py-2 rounded text-dark text-center">Sign in</a>
-          </Link>
+          <a href="/api/signup" className="bg-primary block border border-transparent px-4 py-2 rounded text-white text-center">Sign up</a>
+          <a href="/api/signin" className="block border border-transparent px-4 py-2 rounded text-dark text-center">Sign in</a>
         </div>
       </div>
     </div>

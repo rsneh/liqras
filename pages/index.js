@@ -26,9 +26,7 @@ export default function Home() {
                   The place where thoughts become <span className="font-black">Words</span>
                 </p>
                 <div className="mx-auto mt-8 flex justify-center">
-                  <Link href="/api/signup">
-                    <a className="px-8 py-3 md:py-4 md:text-lg md:px-10 items-center justify-center inline-flex text-white text-base font-bold whitespace-nowrap border border-transparent rounded bg-primary hover:bg-dark">Sign up</a>
-                  </Link>
+                  <a href="/api/signup" className="px-8 py-3 md:py-4 md:text-lg md:px-10 items-center justify-center inline-flex text-white text-base font-bold whitespace-nowrap border border-transparent rounded bg-primary hover:bg-dark">Sign up</a>
                 </div>
               </div>
             </div>
