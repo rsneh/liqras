@@ -30,6 +30,7 @@ export default function SubscribeFormSection() {
         <div className="mt-4">
           <div className="flex items-center">
             <form className="flex-1 flex items-center" onSubmit={onSubmitSubscribeHandler} method="post">
+              <label htmlFor="subscribe-email" className="sr-only">Email</label>
               <InputSolid
                 innerRef={emailInputRef}
                 required
