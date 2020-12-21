@@ -1,11 +1,23 @@
 @import "../styles/variables.scss";
 
 .privacy-page {
-  @apply text-justify;
   h1 {
     @apply mb-5;
   }
   p {
     @apply my-1;
+  }
+  strong {
+    @apply font-bold;
+  }
+  ul {
+    @apply list-disc;
+    @apply list-inside;
+    @apply my-2;
+    li {
+      p {
+        @apply inline;
+      }
+    }
   }
 }
