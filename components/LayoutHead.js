@@ -3,7 +3,7 @@ import config from 'config'
 import { useRouter } from 'next/router'
 import { getSiteMetaData } from 'utils/helpers'
 
-export default function LayoutHead({ title, description = "", image = null }) {
+export default function LayoutHead({ title, description = "", image = null, isRTL = false }) {
   const { pathname, asPath } = useRouter()
   const siteMetadata = getSiteMetaData()
   const isHome = pathname === "/"
@@ -52,6 +52,9 @@ export default function LayoutHead({ title, description = "", image = null }) {
       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       <link rel="apple-touch-icon" href="/favicon.ico" />
       <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      {isRTL && (
+        <link rel="stylesheet" href="/fonts/hebrew.css" media="none" onload="if(media!='all')media='all'" />
+      )}
     </Head>
   )
 }

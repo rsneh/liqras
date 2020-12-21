@@ -6,10 +6,6 @@ import PostAuthor from 'components/PostAuthor'
 import { parseFeatureImageSource } from 'utils/helpers'
 import styles from './styles.module.scss'
 
-const HebrewLanguageAdjustments = dynamic(() => import('components/HebrewLanguageAdjustments'),
-  { ssr: false }
-)
-
 export default function BlogPost({ post, author, blogSlug }) {
   const {
     fields: {
@@ -26,9 +22,6 @@ export default function BlogPost({ post, author, blogSlug }) {
   const postFeatureImageSrc = parseFeatureImageSource(featureImage)
   return (
     <div className={cs(styles['blog-post'], isRTL && styles['heb'], isRTL && styles['is-rtl'])}>
-      {isRTL && (
-        <HebrewLanguageAdjustments />
-      )}
       <BlogPostHeader
         title={title}
         author={author}

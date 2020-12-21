@@ -30,13 +30,13 @@ export default function PostSlug({ blog, post }) {
   }
 
   const { fields: { title: blogTitle, slug: blogSlug, author } } = blog
-  const { fields: { title: postTitle, content: blocks, featureImage } } = post
+  const { fields: { title: postTitle, content: blocks, featureImage, options: postOptions } } = post
   const title = `${postTitle} - ${blogTitle}`
   const description = parsePostDescription(blocks)
   const featureImageUrl = featureImage?.fields?.file?.url
   return (
     <BlogContextProvider blog={blog}>
-      <LayoutHead title={title} description={description} image={featureImageUrl} />
+      <LayoutHead title={title} description={description} image={featureImageUrl} isRTL={postOptions?.isRTL} />
       <Layout user={user} loading={loading}>
         <div className="md:w-full md:mx-auto max-w-6xl">
           <BlogPost post={post} author={author} blogSlug={blogSlug} />
