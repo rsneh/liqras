@@ -33,8 +33,8 @@ export default function Home() {
           </div>
           <div className="absolute inset-y-0 right-0 left-0 z-0 opacity-40">
             <Image
-              width={3840}
-              height={2560}
+              width={2560}
+              height={1707}
               src="/images/background-home.jpg"
               style={{ objectFit: 'cover' }}
               layout="responsive"
