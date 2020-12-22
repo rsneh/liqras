@@ -38,7 +38,6 @@ export default function Home() {
               src="/images/background-home.jpg"
               style={{ objectFit: 'cover' }}
               layout="responsive"
-              sizes="(max-width: 600px) 100vw, (max-width: 1023px) 48vw, 23vw"
               alt=""
             />
           </div>
