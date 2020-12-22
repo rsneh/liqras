@@ -88,6 +88,6 @@ export async function getStaticProps({ params }) {
       blog,
       post
     },
-    revalidate: 1
+    revalidate: (60 * 60) // an hour
   }
 }
