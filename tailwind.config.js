@@ -23,7 +23,10 @@ const defaultSerif = [
 ];
 
 module.exports = {
-  purge: ["./**/{pages,components,tailwind}/**/*.{js,jsx,ts,tsx,css}"],
+  purge: [
+    './styles/*.{css,scss}',
+    './{pages,components,context,actions,utils}/**/*.{js,css,scss}'
+  ],
   theme: {
     extend: {
       colors: {
@@ -42,11 +45,7 @@ module.exports = {
       spacing: {
         14: "3.375rem",
       },
-    },
-    // fontFamily: {
-    //   display: ["Open Sans", ...defaultSans],
-    //   body: ["Merriweather", ...defaultSerif],
-    // },
+    }
   },
   variants: {},
   plugins: [require("@tailwindcss/typography")],
