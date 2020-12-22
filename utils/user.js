@@ -10,7 +10,7 @@ export const fetchUser = async () => {
   }
 
   const res = await fetch('/api/me')
-  userState = res.ok ? await res.json() : null
+  userState = res.ok && res.status === 200 ? await res.json() : null
   return userState
 };
 
