@@ -53,7 +53,7 @@ export default function LayoutHead({ title, description = "", image = null, isRT
       <link rel="apple-touch-icon" href="/favicon.ico" />
       <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       {isRTL && (
-        <link rel="stylesheet" href="/fonts/hebrew.css" media="none" onload="if(media!='all')media='all'" />
+        <link rel="stylesheet" href="/fonts/hebrew.css" media="none" onLoad="if(media!='all')media='all'" />
       )}
     </Head>
   )
