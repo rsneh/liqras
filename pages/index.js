@@ -38,7 +38,7 @@ export default function Home() {
               src="/images/background-home.webp"
               style={{ objectFit: 'cover' }}
               layout="responsive"
-              sizes="(max-width: 640px) 640px, (max-width: 1280px) 1920px, 2500px"
+              sizes="(max-width: 640px) 640w, (max-width: 1080px) 1080w, (max-width: 1920px) 1920w, 2048w"
               alt=""
             />
           </div>
