@@ -104,7 +104,7 @@ export function parseProfile(data) {
 }
 
 export function convertAuthorId(userId) {
-  return Buffer.from(userId).toString('hex')
+  return Buffer.from(userId).toString('hex').substring(0, 64)
 }
 
 export function slugify(text) {

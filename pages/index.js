@@ -35,9 +35,10 @@ export default function Home() {
             <Image
               width={2560}
               height={1707}
-              src="/images/background-home.jpg"
+              src="/images/background-home.webp"
               style={{ objectFit: 'cover' }}
               layout="responsive"
+              sizes="(max-width: 640px) 640px, (max-width: 1280px) 1920px, 2500px"
               alt=""
             />
           </div>
