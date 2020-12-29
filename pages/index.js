@@ -1,5 +1,4 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import cs from 'classnames'
 import Layout from 'components/Layout'
 import { useFetchUser } from 'utils/user'
 import LayoutHead from 'components/LayoutHead'
@@ -7,6 +6,7 @@ import Feature1Icon from 'assets/feature1-icon.svg'
 import Feature2Icon from 'assets/feature2-icon.svg'
 import Feature3Icon from 'assets/feature3-icon.svg'
 import SubscribeFormSection from 'components/SubscribeFormSection'
+import styles from './home.module.scss'
 
 export default function Home() {
   const { user, loading } = useFetchUser()
@@ -31,17 +31,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 left-0 z-0 opacity-40">
-            <Image
-              width={2560}
-              height={1707}
-              src="/images/background-home.webp"
-              style={{ objectFit: 'cover' }}
-              layout="responsive"
-              sizes="(max-width: 640px) 640w, (max-width: 1080px) 1080w, (max-width: 1920px) 1920w, 2048w"
-              alt=""
-            />
-          </div>
+          <div className={cs("absolute inset-y-0 right-0 left-0 z-0 opacity-40", styles.backgroundTopImage)} />
         </div>
 
         <div className="bg-gray-50">
