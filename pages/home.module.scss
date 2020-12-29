@@ -2,9 +2,13 @@
 
 .backgroundTopImage {
   background-image: linear-gradient(0deg, $silver-color, 30%, transparent),
-    url("/images/background-home.webp");
+    url("/images/background-home-mobile.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   height: 100%;
+  @media (min-width: 768px) {
+    background-image: linear-gradient(0deg, $silver-color, 30%, transparent),
+      url("/images/background-home.webp");
+  }
 }
