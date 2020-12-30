@@ -9,7 +9,7 @@ export default function Posts({ allowEdit = false }) {
   const { posts = [] } = blog?.fields
   const isEmpty = posts.length === 0
   return (
-    <div className="flex-grow flex flex-col items-center">
+    <div className="flex-grow flex flex-col items-center space-y-4">
       {isEmpty ? (
         <PostsIsEmpty />
       ) : posts.map((post, idx) => (

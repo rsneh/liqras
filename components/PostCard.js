@@ -32,7 +32,7 @@ export default function PostCard({ blogSlug, post, allowEdit }) {
         <div className="flex justify-between">
           <div className="flex-1 p-4 pb-0">
             {allowEdit && (
-              <div className="float-left">
+              <div className={isRTL ? "float-left" : "float-right"}>
                 <Link href={`/post/${postId}/edit`}>
                   <a>
                     <EditIcon className="text-primary h-4 w-4" />
@@ -52,17 +52,21 @@ export default function PostCard({ blogSlug, post, allowEdit }) {
             )}
           </div>
         </div>
-        <div className={cs("w-full px-4 py-2 overflow-hidden text-sm")}>
-          <PostContent blocks={postContent} summary={true} />
-        </div>
-        <hr className="border-gray-100" />
-        <section className={cs("px-4 py-2 mt-2", styles.ltr)}>
-          <div className="flex items-center justify-center">
-            <Link href={postHref}>
-              <a className="mt-1 text-xs">Read more - <PostReadingTime blocks={postContent} /></a>
-            </Link>
-          </div>
-        </section>
+        {postContent && (
+          <>
+            <div className={cs("w-full px-4 py-2 overflow-hidden text-sm")}>
+              <PostContent blocks={postContent} summary={true} />
+            </div>
+            <hr className="border-gray-100" />
+            <section className={cs("px-4 py-2 mt-2", styles.ltr)}>
+              <div className="flex items-center justify-center">
+                <Link href={postHref}>
+                  <a className="mt-1 text-xs">Read more - <PostReadingTime blocks={postContent} /></a>
+                </Link>
+              </div>
+            </section>
+          </>
+        )}
       </div>
     </div>
   )

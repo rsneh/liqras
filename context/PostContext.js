@@ -29,12 +29,12 @@ export function initializePostState(post) {
     ...initialPostState,
     id,
     sys,
-    isRTL: fields?.options?.isRTL,
+    isRTL: fields?.options?.isRTL || initialPostState.isRTL,
     title: fields?.title,
     slug: fields?.slug,
     autoSave: getLocalStorageValue('postAutoSave'),
-    featureImage: fields?.featureImage,
-    blocks: fields?.content,
+    featureImage: fields?.featureImage || initialPostState.featureImage,
+    blocks: fields?.content || initialBlocks,
   }
 }
 
