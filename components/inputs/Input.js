@@ -33,9 +33,11 @@ export function InputSolid({
 export default function Input({
   id,
   label,
+  name = '',
   type = 'text',
   helpText = '',
   placeholder = '',
+  disabled = false,
   onChange = undefined,
   defaultValue = undefined
 }) {
@@ -49,21 +51,24 @@ export default function Input({
       <div className="mb-4 relative">
         <input
           id={id}
+          name={name}
           type={type}
           ref={inputElem}
+          disabled={disabled}
           onChange={onChange}
           onKeyUp={onKeyUpHandler}
           placeholder={placeholder}
           value={defaultValue}
           className={cs(
             isFilled && styles.filled,
+            { 'opacity-50 cursor-not-allowed': disabled },
             `border border-gray-300 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus:border-primary focus:outline-none active:outline-none active:border-primary`
           )}
         />
         <label
           htmlFor={id}
           onClick={onClickLabelHandler}
-          className="absolute mb-0 -mt-2 pt-4 pl-3 leading-tighter text-gray-400 text-base mt-2 cursor-text"
+          className="absolute mb-0 -mt-2 pt-4 pl-3 leading-tighter text-base mt-2 cursor-text"
         >{label}</label>
       </div>
       {helpText && (

@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "./variables.scss";
 
 @layer base {
   a {
@@ -94,6 +95,19 @@
     }
     &-enter-done {
       opacity: 1;
+    }
+  }
+  pre {
+    @apply w-full;
+    @apply my-4;
+    @apply p-4;
+    @apply bg-gray-100;
+    code {
+      direction: ltr;
+      border-radius: $border-radius;
+      display: block;
+      unicode-bidi: embed;
+      white-space: pre-wrap;
     }
   }
 }

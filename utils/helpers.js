@@ -41,11 +41,11 @@ export const allowedTags = [
   //   tag: "img",
   //   label: "Image",
   // },
-  // {
-  //   id: "code",
-  //   tag: "code",
-  //   label: "Code",
-  // }
+  {
+    id: "code",
+    tag: "code",
+    label: "Code",
+  }
 ]
 
 export function getSiteMetaData() {
@@ -140,4 +140,4 @@ export function parseWebsite(website) {
     return [websiteUrl.origin, websiteUrl.origin.replace(websiteUrl.protocol + '//', '')]
   }
   return [website, website]
-} 
+}

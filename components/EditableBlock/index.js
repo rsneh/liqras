@@ -49,6 +49,7 @@ export default class EditableBlock extends React.Component {
         y: null,
       },
       actionMenuOpen: false,
+      actionMenuSelection: null,
       actionMenuPosition: {
         x: null,
         y: null,
@@ -76,6 +77,14 @@ export default class EditableBlock extends React.Component {
         imageUrl: this.props.imageUrl,
       });
     }
+    this.contentEditable.current.addEventListener("paste", function (e) {
+      e.preventDefault();
+      // get text representation of clipboard
+      var text = (e.originalEvent || e).clipboardData.getData('text/plain');
+
+      // insert text manually
+      document.execCommand("insertHTML", false, text);
+    })
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -194,6 +203,7 @@ export default class EditableBlock extends React.Component {
       ...this.state,
       actionMenuPosition: { x: x, y: y },
       actionMenuOpen: true,
+      actionMenuSelection: getSelection(this.contentEditable.current)
     });
     // Add listener asynchronously to avoid conflicts with
     // the double click of the text selection
@@ -207,6 +217,7 @@ export default class EditableBlock extends React.Component {
       ...this.state,
       actionMenuPosition: { x: null, y: null },
       actionMenuOpen: false,
+      actionMenuSelection: null
     });
     document.removeEventListener("click", this.closeActionMenu, false);
   }
@@ -269,13 +280,13 @@ export default class EditableBlock extends React.Component {
 
   async handleImageUpload() {
     if (this.fileInput && this.fileInput.files[0]) {
-      const pageId = this.props.pageId;
+      const postId = this.props.postId;
       const imageFile = this.fileInput.files[0];
       const formData = new FormData();
       formData.append("image", imageFile);
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API}/pages/images?pageId=${pageId}`,
+          `${process.env.NEXT_PUBLIC_API}/pages/images?postId=${postId}`,
           {
             method: "POST",
             credentials: "include",
@@ -360,6 +371,7 @@ export default class EditableBlock extends React.Component {
             actions={{
               deleteBlock: () => this.props.deleteBlock({ id: this.props.id }),
               turnInto: () => this.openTagSelectorMenu("ACTION_MENU"),
+              turnToLink: () => this.props.turnToLink({ id: this.props.id }, this.state.actionMenuSelection)
             }}
           />
         )}
@@ -370,7 +382,34 @@ export default class EditableBlock extends React.Component {
               className={styles.draggable}
               {...provided.draggableProps}
             >
-              {this.state.tag !== "img" && (
+              {this.state.tag === "code" && (
+                <pre>
+                  <ContentEditable
+                    innerRef={this.contentEditable}
+                    data-position={this.props.position}
+                    data-tag={this.state.tag}
+                    html={this.state.html}
+                    onChange={this.handleChange}
+                    onFocus={this.handleFocus}
+                    onBlur={this.handleBlur}
+                    onKeyDown={this.handleKeyDown}
+                    onKeyUp={this.handleKeyUp}
+                    onMouseUp={this.handleMouseUp}
+                    tagName={this.state.tag}
+                    className={[
+                      styles.block,
+                      this.state.isTyping ||
+                        this.state.actionMenuOpen ||
+                        this.state.tagSelectorMenuOpen
+                        ? styles.blockSelected
+                        : null,
+                      this.state.placeholder ? styles.placeholder : null,
+                      snapshot.isDragging ? styles.isDragging : null,
+                    ].join(" ")}
+                  />
+                </pre>
+              )}
+              {["img", "code"].indexOf(this.state.tag) === -1 && (
                 <ContentEditable
                   innerRef={this.contentEditable}
                   data-position={this.props.position}

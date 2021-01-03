@@ -5,7 +5,7 @@ export default function Modal({ children, button, header = true, title = '', siz
   return (
     <>
       {cloneElement(button, {
-        onClick: (e) => setShowModal(true)
+        onClick: (e) => setShowModal(prev => !prev)
       })}
       {showModal ? (
         <>

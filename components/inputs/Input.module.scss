@@ -10,6 +10,9 @@
       top: -0.1rem;
       @apply text-primary;
     }
+    &:disabled + label {
+      @apply text-gray-400;
+    }
   }
 
   label {

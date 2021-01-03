@@ -1,4 +1,5 @@
 import { createElement } from 'react'
+import decodeHtml from 'decode-html'
 
 // import { allowedTags } from 'utils/helpers'
 // export function convertBlockToHTML(block) {
@@ -12,6 +13,10 @@ import { createElement } from 'react'
 //   return cleanHtml
 // }
 
+function decodeAndParseHtml(html) {
+  return decodeHtml(html)
+}
+
 export default function PostContent({ blocks, showTitle = false, summary = false }) {
   const htmlBlocks = blocks.reduce((prevBlock, currentBlock, index) => {
     if (!showTitle && currentBlock.tag === 'h1') return prevBlock
@@ -19,7 +24,20 @@ export default function PostContent({ blocks, showTitle = false, summary = false
       if (showTitle && index > 1) return prevBlock
       if (!showTitle && index > 4) return prevBlock
     }
-    const block = createElement(currentBlock.tag, { key: index }, currentBlock.html)
+    let block;
+    if (currentBlock.tag === "code") {
+      block = createElement("pre", { key: index }, (
+        <code>{decodeHtml(currentBlock.html)}</code>
+      ))
+    }
+    else {
+      block = createElement(currentBlock.tag, {
+        key: index,
+        dangerouslySetInnerHTML: {
+          __html: decodeAndParseHtml(currentBlock.html)
+        }
+      })
+    }
     prevBlock.push(block)
     return prevBlock
   }, [])

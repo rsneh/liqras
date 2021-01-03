@@ -1,15 +1,20 @@
 import cs from 'classnames'
-import { useState, useEffect } from 'react'
-import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import { objectId } from 'utils/common'
-import EditableBlock from 'components/EditableBlock'
-import { setCaretToEnd } from 'components/EditableBlock/utils'
 import styles from './Editor.module.scss'
+import { useState, useEffect } from 'react'
+import EditableBlock from 'components/EditableBlock'
+import AnchorDialog from 'components/Dialog'
+import AnchorDialogForm from 'components/AnchorDialogForm'
+import { setCaretToEnd } from 'components/EditableBlock/utils'
+import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 export const DEFAULT_BLOCK = { tag: "p", html: "", imageUrl: "" }
 
 export default function Editor({ id, blocks, prevBlocks, setBlocks, error, isRTL }) {
   const [currentBlockId, setCurrentBlockId] = useState(null)
+  const [currentSelection, setCurrentSelection] = useState(null)
+  const [anchorDialogOpen, setAnchorDialogOpen] = useState(false)
+  const toggleAnchorDialog = () => setAnchorDialogOpen(prev => !prev)
 
   // Handling the cursor and focus on adding and deleting blocks
   useEffect(() => {
@@ -42,9 +47,7 @@ export default function Editor({ id, blocks, prevBlocks, setBlocks, error, isRTL
 
     // If we don't have a destination (due to dropping outside the droppable)
     // or the destination hasn't changed, we change nothing
-    if (!destination || destination.index === source.index) {
-      return;
-    }
+    if (!destination || destination.index === source.index) return
 
     const updatedBlocks = [...blocks]
     const removedBlocks = updatedBlocks.splice(source.index - 1, 1)
@@ -104,34 +107,58 @@ export default function Editor({ id, blocks, prevBlocks, setBlocks, error, isRTL
     }
   }
 
+  const turnToLinkBlockHandler = (currentBlock, selection) => {
+    if (blocks.length > 1) {
+      setCurrentBlockId(currentBlock.id)
+      if (selection) {
+        setCurrentSelection(selection)
+        toggleAnchorDialog()
+      }
+    }
+  }
+
   return (
-    <div className={cs(styles.editorContainer, isRTL && styles.editorContainerIsRTL)}>
-      <DragDropContext onDragEnd={onDragEndHandler}>
-        <Droppable droppableId={id}>
-          {(provided) => (
-            <div ref={provided.innerRef} {...provided.droppableProps}>
-              {blocks.map((block) => {
-                const position = blocks.map((b) => b._id).indexOf(block._id) + 1
-                return (
-                  <EditableBlock
-                    key={block._id}
-                    position={position}
-                    id={block._id}
-                    tag={block.tag}
-                    html={block.html}
-                    imageUrl={block.imageUrl}
-                    pageId={id}
-                    addBlock={addBlockHandler}
-                    deleteBlock={deleteBlockHandler}
-                    updateBlock={updateBlockHandler}
-                  />
-                );
-              })}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
-    </div >
+    <>
+      <div className={cs(styles.editorContainer, isRTL && styles.editorContainerIsRTL)}>
+        <DragDropContext onDragEnd={onDragEndHandler}>
+          <Droppable droppableId={id}>
+            {(provided) => (
+              <div ref={provided.innerRef} {...provided.droppableProps}>
+                {blocks.map((block) => {
+                  const position = blocks.map((b) => b._id).indexOf(block._id) + 1
+                  return (
+                    <EditableBlock
+                      key={block._id}
+                      position={position}
+                      id={block._id}
+                      tag={block.tag}
+                      html={block.html}
+                      imageUrl={block.imageUrl}
+                      postId={id}
+                      addBlock={addBlockHandler}
+                      deleteBlock={deleteBlockHandler}
+                      updateBlock={updateBlockHandler}
+                      turnToLink={turnToLinkBlockHandler}
+                    />
+                  );
+                })}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </div>
+      {anchorDialogOpen && (
+        <AnchorDialog open={anchorDialogOpen} onClose={toggleAnchorDialog}>
+          <AnchorDialogForm
+            onClose={toggleAnchorDialog}
+            blocks={blocks}
+            setBlocks={setBlocks}
+            selection={currentSelection}
+            currentBlockId={currentBlockId}
+          />
+        </AnchorDialog>
+      )}
+    </>
   )
 }

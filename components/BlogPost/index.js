@@ -1,5 +1,4 @@
 import cs from 'classnames'
-import dynamic from 'next/dynamic'
 import BlogPostHeader from './BlogPostHeader'
 import PostContent from 'components/PostContent'
 import PostAuthor from 'components/PostAuthor'
