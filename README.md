@@ -1,30 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+    <a href="https://liqras.com" target="_blank">
+      <img width="112" height="40" src="https://liqras.com/images/liqras-f-logo-b.png" alt="Liqras Logo">
+    </a>
+    <br />
+    <br />
+    <b>A bloggers platform for writing and sharing your thoughts with the rest of the world.</b>
+    <br />
+    <br />
+</p>
 
-## Getting Started
+Liqras is an open-source platform for bloggers who wants to create their own blog in a snap of a click.
+The idea behind Liqras is to allow the bloggers to create their content in any language they want without worrying it will affect the look and feel of the blog.
 
-First, run the development server:
+Using Liqras.com you can easily create your own blog and start writing your thoughts into words in your native language and publish them to the rest of the world.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contributing
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+All code contributions - including those of people having commit access - must go through a pull request and approved by a core developer before being merged. This is to ensure proper review of all the code.
 
-## Learn More
+We truly ❤️ pull requests! If you wish to help, you can learn more about how you can contribute to this project in the [contribution guide](CONTRIBUTING.md).
 
-To learn more about Next.js, take a look at the following resources:
+## Security
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+For security issues, kindly email us [security@liqras.com](mailto:security@liqras.com) instead of posting a public issue in GitHub.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This repository is available under the [MIT](./LICENSE).
