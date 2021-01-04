@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://liqras.com" target="_blank">
-      <img width="112" height="40" src="https://liqras.com/images/liqras-f-logo-b.png" alt="Liqras Logo">
+      <img width="225" height="80" src="https://liqras.com/images/liqras-f-logo-b.png" alt="Liqras Logo">
     </a>
     <br />
     <br />
@@ -14,7 +14,6 @@ The idea behind Liqras is to allow the bloggers to create their content in any l
 
 Using Liqras.com you can easily create your own blog and start writing your thoughts into words in your native language and publish them to the rest of the world.
 
-
 ## Contributing
 
 All code contributions - including those of people having commit access - must go through a pull request and approved by a core developer before being merged. This is to ensure proper review of all the code.
@@ -27,4 +26,4 @@ For security issues, kindly email us [security@liqras.com](mailto:security@liqra
 
 ## License
 
-This repository is available under the [MIT](./LICENSE).
+Distributed under the MIT license. See [LICENSE](./LICENSE) for more information.
