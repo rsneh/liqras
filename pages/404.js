@@ -13,7 +13,7 @@ export default function Custom404() {
       <div id="layout" className="flex flex-col min-h-screen antialiased">
         <Header />
         <div className="flex flex-1 flex-col justify-center">
-          <div className="my-0 mx-auto block relative md:w-1/4">
+          <div className="my-0 mx-auto block relative max-w-sm md:w-1/3">
             <div className="opacity-75">
               <Page404Icon />
             </div>
