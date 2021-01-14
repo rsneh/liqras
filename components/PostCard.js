@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import cs from 'classnames'
 import { dateFormat, parseFeatureImageSource } from 'utils/helpers'
 import PostContent from 'components/PostContent'
@@ -33,19 +32,15 @@ export default function PostCard({ blogSlug, post, allowEdit }) {
           <div className="flex-1 p-4 pb-0">
             {allowEdit && (
               <div className={isRTL ? "float-left" : "float-right"}>
-                <Link href={`/post/${postId}/edit`}>
-                  <a>
-                    <EditIcon className="text-primary h-4 w-4" />
-                  </a>
-                </Link>
+                <a href={`/post/${postId}/edit`}>
+                  <EditIcon className="text-primary h-4 w-4" />
+                </a>
               </div>
             )}
             {title && (
-              <Link href={postHref} className="hover:underline">
-                <a>
-                  <h2 className="tracking-wider sm:leading-normal">{title}</h2>
-                </a>
-              </Link>
+              <a href={postHref} className="hover:underline">
+                <h2 className="tracking-wider sm:leading-normal">{title}</h2>
+              </a>
             )}
             {sys?.createdAt && (
               <div className="text-xs leading-loose text-gray-600">{dateFormat(new Date(sys.createdAt))}</div>
@@ -60,9 +55,7 @@ export default function PostCard({ blogSlug, post, allowEdit }) {
             <hr className="border-gray-100" />
             <section className={cs("px-4 py-2 mt-2", styles.ltr)}>
               <div className="flex items-center justify-center">
-                <Link href={postHref}>
-                  <a className="mt-1 text-xs">Read more - <PostReadingTime blocks={postContent} /></a>
-                </Link>
+                <a href={postHref} className="mt-1 text-xs">Read more - <PostReadingTime blocks={postContent} /></a>
               </div>
             </section>
           </>

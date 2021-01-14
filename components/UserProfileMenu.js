@@ -2,8 +2,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Menu from 'components/Menu'
-import BellIcon from 'assets/bell-icon.svg'
 import PlusIcon from 'assets/plus-icon.svg'
+// import BellIcon from 'assets/bell-icon.svg'
 
 export default function UserProfileMenu({ user }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -45,9 +45,7 @@ export default function UserProfileMenu({ user }) {
             <Link href={`/profile`}>
               <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
             </Link>
-            <Link href="/api/signout">
-              <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
-            </Link>
+            <a href="/api/signout" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
           </Menu>
         </div>
       </div>
