@@ -51,10 +51,11 @@ export async function getStaticPaths() {
   const { blogs } = res
   const paths = blogs?.reduce((paths, blog) => {
     blog?.posts?.forEach(post => {
+      if (!blog.slug || !post.fields) return
       paths.push({
         params: {
           blogSlug: blog.slug,
-          slug: post?.fields?.slug
+          slug: post.fields?.slug
         }
       })
     })
