@@ -15,7 +15,9 @@ export default function AnchorDialogForm({ html, selection, updateHtml, onClose 
   }, [])
 
   const onClickSaveHandler = () => {
-    updateHtml(html.replace(text, `<a href="${link}">${text}</a>`))
+    const url = new URL(link)
+    const target = url && url.host.includes("liqras.com") ? "_self" : "_blank"
+    updateHtml(html.replace(text, `<a href="${link}" rel="noreferrer noopener" target="${target}">${text}</a>`))
     onClose()
   }
 
