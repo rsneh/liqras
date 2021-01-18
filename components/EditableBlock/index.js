@@ -30,6 +30,7 @@ export default class EditableBlock extends React.Component {
     this.handleImageUpload = this.handleImageUpload.bind(this);
     this.addPlaceholder = this.addPlaceholder.bind(this);
     this.updateHtmlBlock = this.updateHtmlBlock.bind(this);
+    this.handleTurnToLink = this.handleTurnToLink.bind(this);
     this.toggleAnchorDialogOpen = this.toggleAnchorDialogOpen.bind(this);
     this.calculateActionMenuPosition = this.calculateActionMenuPosition.bind(
       this
@@ -376,6 +377,16 @@ export default class EditableBlock extends React.Component {
     }
   }
 
+  handleTurnToLink(delLink, anchorPositions) {
+    if (!delLink) this.toggleAnchorDialogOpen()
+    else {
+      const { html } = this.state
+      if (html) {
+        this.updateHtmlBlock(html.replace(/<[^>]*>?/gm, ''))
+      }
+    }
+  }
+
   render() {
     return (
       <>
@@ -389,10 +400,12 @@ export default class EditableBlock extends React.Component {
         {this.state.actionMenuOpen && (
           <ActionMenu
             position={this.state.actionMenuPosition}
+            selection={this.state.actionMenuSelection}
+            html={this.state.html}
             actions={{
               deleteBlock: () => this.props.deleteBlock({ id: this.props.id }),
               turnInto: () => this.openTagSelectorMenu("ACTION_MENU"),
-              turnToLink: () => this.toggleAnchorDialogOpen()
+              turnToLink: this.handleTurnToLink
             }}
           />
         )}
