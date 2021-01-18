@@ -21,13 +21,7 @@ export default function Custom404() {
               <h1 className="text-4xl font-bold">Not Found</h1>
               <p className="text-black my-2">It seem that we can't find the page you're looking for.</p>
               <div className="mt-10">
-                <Link href="/">
-                  <AnchorButton
-                    size="sm"
-                    label="Take me Home page"
-                    className="underline self-end px-4 py-2"
-                  />
-                </Link>
+                <a href="/" className="underline self-end px-4 py-2">Take me Home page</a>
               </div>
             </div>
           </div>

@@ -76,7 +76,7 @@ export async function getStaticProps({ params }) {
     post = blog?.fields?.posts.find(p => p.sys?.id === postId)
   }
 
-  if (!post) {
+  if (!post || !post?.fields) {
     return {
       notFound: true
     }
