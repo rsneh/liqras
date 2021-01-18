@@ -38,6 +38,7 @@ export default function Input({
   helpText = '',
   placeholder = '',
   disabled = false,
+  style = undefined,
   onChange = undefined,
   defaultValue = undefined
 }) {
@@ -64,6 +65,7 @@ export default function Input({
             { 'opacity-50 cursor-not-allowed': disabled },
             `border border-gray-300 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus:border-primary focus:outline-none active:outline-none active:border-primary`
           )}
+          style={style}
         />
         <label
           htmlFor={id}

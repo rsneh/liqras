@@ -3,6 +3,8 @@ import ContentEditable from "react-contenteditable"
 import { Draggable } from "react-beautiful-dnd"
 import TagSelectorMenu from './TagSelectorMenu'
 import ActionMenu from './ActionMenu'
+import AnchorDialog from 'components/Dialog'
+import AnchorDialogForm from 'components/AnchorDialogForm'
 import DragHandleIcon from 'assets/draggable-icon.svg'
 import CloseIcon from 'assets/close-icon.svg'
 import { setCaretToEnd, getCaretCoordinates, getSelection } from 'components/EditableBlock/utils'
@@ -27,6 +29,7 @@ export default class EditableBlock extends React.Component {
     this.handleTagSelection = this.handleTagSelection.bind(this);
     this.handleImageUpload = this.handleImageUpload.bind(this);
     this.addPlaceholder = this.addPlaceholder.bind(this);
+    this.toggleAnchorDialogOpen = this.toggleAnchorDialogOpen.bind(this);
     this.calculateActionMenuPosition = this.calculateActionMenuPosition.bind(
       this
     );
@@ -48,6 +51,7 @@ export default class EditableBlock extends React.Component {
         x: null,
         y: null,
       },
+      anchorDialogOpen: false,
       actionMenuOpen: false,
       actionMenuSelection: null,
       actionMenuPosition: {
@@ -212,6 +216,12 @@ export default class EditableBlock extends React.Component {
     }, 100);
   }
 
+  toggleAnchorDialogOpen() {
+    this.setState({
+      anchorDialogOpen: !this.state.anchorDialogOpen
+    });
+  }
+
   closeActionMenu() {
     this.setState({
       ...this.state,
@@ -371,7 +381,7 @@ export default class EditableBlock extends React.Component {
             actions={{
               deleteBlock: () => this.props.deleteBlock({ id: this.props.id }),
               turnInto: () => this.openTagSelectorMenu("ACTION_MENU"),
-              turnToLink: () => this.props.turnToLink({ id: this.props.id }, this.state.actionMenuSelection)
+              turnToLink: () => this.toggleAnchorDialogOpen()
             }}
           />
         )}
@@ -491,6 +501,16 @@ export default class EditableBlock extends React.Component {
             </div>
           )}
         </Draggable>
+        {this.state.anchorDialogOpen && (
+          <AnchorDialog open={this.state.anchorDialogOpen} onClose={this.toggleAnchorDialogOpen}>
+            <AnchorDialogForm
+              onClose={this.toggleAnchorDialogOpen}
+              selection={this.state.actionMenuSelection}
+              html={this.state.html}
+              updateHtml={(html) => this.setState({ html })}
+            />
+          </AnchorDialog>
+        )}
       </>
     );
   }

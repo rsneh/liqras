@@ -4,7 +4,7 @@ export default function Dialog({ open, size = 'md', onClose, children }) {
   }
   return (
     <>
-      <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+      <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none font-sans">
         <div className={`relative w-full my-6 bg-white rounded-lg shadow-lg mx-auto max-w-screen-${size}`}>
           <div className="border-0 relative flex flex-col w-full outline-none focus:outline-none">
             <div className="relative p-6 flex-auto">{children}</div>

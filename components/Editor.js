@@ -3,8 +3,6 @@ import { objectId } from 'utils/common'
 import styles from './Editor.module.scss'
 import { useState, useEffect } from 'react'
 import EditableBlock from 'components/EditableBlock'
-import AnchorDialog from 'components/Dialog'
-import AnchorDialogForm from 'components/AnchorDialogForm'
 import { setCaretToEnd } from 'components/EditableBlock/utils'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
@@ -12,9 +10,6 @@ export const DEFAULT_BLOCK = { tag: "p", html: "", imageUrl: "" }
 
 export default function Editor({ id, blocks, prevBlocks, setBlocks, error, isRTL }) {
   const [currentBlockId, setCurrentBlockId] = useState(null)
-  const [currentSelection, setCurrentSelection] = useState(null)
-  const [anchorDialogOpen, setAnchorDialogOpen] = useState(false)
-  const toggleAnchorDialog = () => setAnchorDialogOpen(prev => !prev)
 
   // Handling the cursor and focus on adding and deleting blocks
   useEffect(() => {
@@ -107,16 +102,6 @@ export default function Editor({ id, blocks, prevBlocks, setBlocks, error, isRTL
     }
   }
 
-  const turnToLinkBlockHandler = (currentBlock, selection) => {
-    if (blocks.length > 1) {
-      setCurrentBlockId(currentBlock.id)
-      if (selection) {
-        setCurrentSelection(selection)
-        toggleAnchorDialog()
-      }
-    }
-  }
-
   return (
     <>
       <div className={cs(styles.editorContainer, isRTL && styles.editorContainerIsRTL)}>
@@ -138,7 +123,6 @@ export default function Editor({ id, blocks, prevBlocks, setBlocks, error, isRTL
                       addBlock={addBlockHandler}
                       deleteBlock={deleteBlockHandler}
                       updateBlock={updateBlockHandler}
-                      turnToLink={turnToLinkBlockHandler}
                     />
                   );
                 })}
@@ -148,17 +132,6 @@ export default function Editor({ id, blocks, prevBlocks, setBlocks, error, isRTL
           </Droppable>
         </DragDropContext>
       </div>
-      {anchorDialogOpen && (
-        <AnchorDialog open={anchorDialogOpen} onClose={toggleAnchorDialog}>
-          <AnchorDialogForm
-            onClose={toggleAnchorDialog}
-            blocks={blocks}
-            setBlocks={setBlocks}
-            selection={currentSelection}
-            currentBlockId={currentBlockId}
-          />
-        </AnchorDialog>
-      )}
     </>
   )
 }
