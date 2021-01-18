@@ -29,6 +29,7 @@ export default class EditableBlock extends React.Component {
     this.handleTagSelection = this.handleTagSelection.bind(this);
     this.handleImageUpload = this.handleImageUpload.bind(this);
     this.addPlaceholder = this.addPlaceholder.bind(this);
+    this.updateHtmlBlock = this.updateHtmlBlock.bind(this);
     this.toggleAnchorDialogOpen = this.toggleAnchorDialogOpen.bind(this);
     this.calculateActionMenuPosition = this.calculateActionMenuPosition.bind(
       this
@@ -112,6 +113,16 @@ export default class EditableBlock extends React.Component {
         imageUrl: this.state.imageUrl,
       });
     }
+  }
+
+  updateHtmlBlock(html) {
+    this.setState({ html });
+    this.props.updateBlock({
+      id: this.props.id,
+      imageUrl: this.state.imageUrl,
+      tag: this.state.tag,
+      html
+    });
   }
 
   componentWillUnmount() {
@@ -507,7 +518,7 @@ export default class EditableBlock extends React.Component {
               onClose={this.toggleAnchorDialogOpen}
               selection={this.state.actionMenuSelection}
               html={this.state.html}
-              updateHtml={(html) => this.setState({ html })}
+              updateHtml={this.updateHtmlBlock}
             />
           </AnchorDialog>
         )}
