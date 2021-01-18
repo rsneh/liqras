@@ -22,7 +22,6 @@ export default function postImageHandler(req, res) {
           res.status(400).json({ message: 'Unable to upload image.' })
           return
         }
-        console.log(result)
         res.status(200).json({ ok: true })
       }).catch(error => {
         console.error(error);

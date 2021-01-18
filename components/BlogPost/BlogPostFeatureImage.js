@@ -28,7 +28,6 @@ export default function BlogPostFeatureImage({ postId, image }) {
       const result = await uploadFeatureImageToServer(postId, formData)
       if (result) {
         setLoading(false)
-        console.log(result);
       }
     }
   }
