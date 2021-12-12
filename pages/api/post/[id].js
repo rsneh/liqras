@@ -31,7 +31,6 @@ export default async function postHandler(req, res) {
     case 'DELETE': {
       try {
         const result = await deletePostWithId(id);
-        console.log({ result });
         return res.status(200).json({ message: 'Done!' });
       }
       catch (e) {
