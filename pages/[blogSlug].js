@@ -46,7 +46,7 @@ export async function getStaticPaths() {
         blogSlug: blog.slug
       }
     }
-  })
+  });
   return {
     paths,
     fallback: true,

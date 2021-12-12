@@ -172,6 +172,7 @@ export function publishPostWithId(id) {
 }
 
 export function deletePostWithId(id) {
+  // TODO: Delete postId from blog posts
   return new Promise((resolve, reject) => {
     managementClient.getSpace(config.CONTENTFUL.SPACE_ID)
       .then((space) => space.getEnvironment('master'))

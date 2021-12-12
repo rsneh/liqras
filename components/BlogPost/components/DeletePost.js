@@ -4,6 +4,7 @@ import { AnchorButton, Button } from 'components/Buttons'
 export default function DeletePost({ onClickDeleteButton }) {
   return (
     <Modal
+      size="md"
       header={false}
       footer={false}
       button={

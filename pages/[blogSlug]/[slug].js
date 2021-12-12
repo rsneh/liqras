@@ -47,8 +47,8 @@ export default function PostSlug({ blog, post }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetchBlogForIndex()
-  const { blogs } = res
+  const res = await fetchBlogForIndex();
+  const { blogs } = res;
   const paths = blogs?.reduce((paths, blog) => {
     blog?.posts?.forEach(post => {
       if (!blog.slug || !post.fields) return
@@ -58,7 +58,7 @@ export async function getStaticPaths() {
           slug: post.fields?.slug
         }
       })
-    })
+    });
     return paths
   }, [])
   return {
