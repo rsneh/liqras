@@ -7,13 +7,13 @@ import EditIcon from 'assets/edit-icon.svg'
 import styles from './PostCard.module.scss'
 
 export default function PostCard({ blogSlug, post, allowEdit }) {
-  const { sys, fields } = post
-  const { title, featureImage, slug: postSlug, content: postContent } = fields
-  const options = fields?.options || {}
-  const { isRTL } = options
-  const postId = sys?.id
-  const postHref = `/${blogSlug}/${postSlug}-${postId}`
-  const postFeatureImageSrc = parseFeatureImageSource(featureImage)
+  const { sys, fields } = post;
+  const { title, featureImage, slug: postSlug, content: postContent } = fields;
+  const options = fields?.options || {};
+  const { isRTL } = options;
+  const postId = sys?.id;
+  const postHref = `/${blogSlug}/${postSlug}-${postId}`;
+  const postFeatureImageSrc = parseFeatureImageSource(featureImage);
   return (
     <div className={cs(styles.postCard, "transition-all duration-150 flex flex-col w-full sm:px-4", isRTL && styles['is-rtl'])}>
       <div className="flex flex-col items-stretch min-h-full pb-4 transition-all duration-150 bg-white shadow-lg sm:rounded-lg hover:shadow-2xl">

@@ -1,7 +1,7 @@
 import cs from 'classnames'
 import LoadingIcon from 'components/LoadingIcon'
 
-export function AnchorButton({ label, onClick, className, size = 'xs', colorClass = "text-primary" }) {
+export function AnchorButton({ label, onClick, className, fontBold = true, size = 'xs', colorClass = "text-primary" }) {
   return (
     <button
       type="button"
@@ -9,8 +9,9 @@ export function AnchorButton({ label, onClick, className, size = 'xs', colorClas
       className={cs(
         className,
         colorClass,
+        { 'font-bold': fontBold },
         `text-${size}`,
-        "background-transparent font-bold outline-none focus:outline-none"
+        "background-transparent outline-none focus:outline-none"
       )}
       style={{ transition: "all .15s ease" }}
     >

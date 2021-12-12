@@ -1,16 +1,17 @@
-import { setLocalStorageValue } from 'utils/common'
-import { initializePostState } from 'context/PostContext'
+import { setLocalStorageValue } from 'utils/common';
+import { initializePostState } from 'context/PostContext';
 
-export const POST_SET_RTL = 'POST_SET_RTL'
-export const POST_SET_LOADING = 'POST_SET_LOADING'
-export const POST_SET_AUTOSAVE = 'POST_SET_AUTOSAVE'
-export const POST_SET_RESULT = 'POST_SET_RESULT'
-export const POST_SET_BLOCKS = 'POST_SET_BLOCKS'
-export const POST_SET_UPDATED = 'POST_SET_UPDATED'
-export const POST_SET_SLUG = 'POST_SET_SLUG'
+export const POST_SET_RTL = 'POST_SET_RTL';
+export const POST_SET_LOADING = 'POST_SET_LOADING';
+export const POST_SET_AUTOSAVE = 'POST_SET_AUTOSAVE';
+export const POST_SET_RESULT = 'POST_SET_RESULT';
+export const POST_SET_BLOCKS = 'POST_SET_BLOCKS';
+export const POST_SET_UPDATED = 'POST_SET_UPDATED';
+export const POST_SET_SLUG = 'POST_SET_SLUG';
+export const POST_DELETED = 'POST_DELETED';
 
 export default function reducer(state, action) {
-  const { type, payload } = action
+  const { type, payload } = action;
   switch (type) {
     case POST_SET_RTL:
       return {

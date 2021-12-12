@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import cs from 'classnames'
 import Switch from 'components/inputs/Switch'
-import { Button } from 'components/Buttons'
+import { Button, AnchorButton } from 'components/Buttons'
 import DateDifference from 'components/DateDifference'
 import BlogPostFeatureImage from 'components/BlogPost/BlogPostFeatureImage'
 import PostStatus from 'components/BlogPost/PostStatus'
@@ -10,8 +10,9 @@ import { isPublished } from 'utils/helpers'
 import { PostContext } from 'context/PostContext'
 import { POST_SET_AUTOSAVE, POST_SET_RTL } from 'actions/postReducer'
 import SavingLoader from 'components/SavingLoader'
+import DeletePost from './components/DeletePost'
 
-export default function EditBlogSidebar({ styles, setSlug, onSavePostHandler, onPublishPostHandler }) {
+export default function EditBlogSidebar({ styles, setSlug, onSavePostHandler, onPublishPostHandler, onDeletePostHandler }) {
   const {
     dispatch,
     state: {
@@ -30,6 +31,11 @@ export default function EditBlogSidebar({ styles, setSlug, onSavePostHandler, on
   const onClickPublishButton = (e) => {
     e.preventDefault()
     onPublishPostHandler(id)
+  }
+
+  const onClickDeleteButton = (e) => {
+    e.preventDefault();
+    onDeletePostHandler(id);
   }
 
   const onClickSaveButton = (e) => {
@@ -73,6 +79,7 @@ export default function EditBlogSidebar({ styles, setSlug, onSavePostHandler, on
           checked={autoSave}
           setChecked={(checked) => dispatch({ type: POST_SET_AUTOSAVE, payload: checked })}
         />
+        <DeletePost onClickDeleteButton={onClickDeleteButton} />
       </div>
       <div className="flex flex-col w-full divide-y mt-auto">
         {lastUpdatedAt && (
@@ -86,26 +93,26 @@ export default function EditBlogSidebar({ styles, setSlug, onSavePostHandler, on
               <SavingLoader />
             </div>
           ) : (
-              <>
+            <>
+              <div className="block">
+                <Button
+                  label="Save"
+                  onClick={onClickSaveButton}
+                  colorClass="text-black bg-silver"
+                  className="submit-action self-end px-4 py-2"
+                />
+              </div>
+              {!postIsPublished && (
                 <div className="block">
                   <Button
-                    label="Save"
-                    onClick={onClickSaveButton}
-                    colorClass="text-black bg-silver"
+                    label="Publish"
+                    onClick={onClickPublishButton}
                     className="submit-action self-end px-4 py-2"
                   />
                 </div>
-                {!postIsPublished && (
-                  <div className="block">
-                    <Button
-                      label="Publish"
-                      onClick={onClickPublishButton}
-                      className="submit-action self-end px-4 py-2"
-                    />
-                  </div>
-                )}
-              </>
-            )}
+              )}
+            </>
+          )}
         </div>
       </div>
     </div>

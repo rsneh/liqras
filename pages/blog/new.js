@@ -11,7 +11,7 @@ export default function BlogNewPost({ error }) {
   const { user, loading } = useFetchUser()
 
   if (!user && !loading) {
-    router.replace('/')
+    return router.replace('/')
   }
 
   return (
@@ -35,9 +35,12 @@ export const getServerSideProps = async ({ res, req }) => {
     const { user } = await auth0.getSession(req)
     try {
       const { id } = await initialPost(user)
-      res.writeHead(302, { Location: `/p/${id}` })
-      res.end()
-      return { props: {} }
+      return {
+        redirect: {
+          destination: `/post/${id}/edit`,
+          permanent: false,
+        },
+      };
     } catch (err) {
       console.log(err)
       return { props: { error: true } }

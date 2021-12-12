@@ -171,6 +171,17 @@ export function publishPostWithId(id) {
   })
 }
 
+export function deletePostWithId(id) {
+  return new Promise((resolve, reject) => {
+    managementClient.getSpace(config.CONTENTFUL.SPACE_ID)
+      .then((space) => space.getEnvironment('master'))
+      .then((environment) => environment.getEntry(id))
+      .then((entry) => entry.delete())
+      .then(() => resolve('Entry deleted.'))
+      .catch(reject)
+  });
+}
+
 export function attachPostToBlog(blogId, post) {
   const { id: postId, type } = post
   return new Promise((resolve, reject) => {

@@ -1,4 +1,4 @@
-import { updatePostById } from 'utils/contentful'
+import { updatePostById, deletePostWithId } from 'utils/contentful'
 import { parsePost } from 'utils/helpers'
 
 function updatePostBlocks(id, blocks, slug, options) {
@@ -20,7 +20,7 @@ export default async function postHandler(req, res) {
   switch (method) {
     case 'GET':
       // Get data from your database
-      res.status(200).json({ id, name: `User ${id}` })
+      res.status(200).json({ id, name: `Post ${id}` })
       break
     case 'PUT':
       const putResult = await updatePostBlocks(id, blocks, slug, options)
@@ -28,6 +28,17 @@ export default async function postHandler(req, res) {
         res.status(200).json(putResult)
       }
       break
+    case 'DELETE': {
+      try {
+        const result = await deletePostWithId(id);
+        console.log({ result });
+        return res.status(200).json({ message: 'Done!' });
+      }
+      catch (e) {
+        console.error(`Unable to delete post id ${id}. Error: ${e}.`);
+        return res.status(500).json({ message: 'Unable to delete post.' })
+      }
+    }
     default:
       res.setHeader('Allow', ['GET', 'PUT'])
       res.status(405).end(`Method ${method} Not Allowed`)

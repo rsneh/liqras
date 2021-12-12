@@ -1,8 +1,6 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import Header from 'components/Header'
 import Page404Icon from 'assets/page-404-icon.svg'
-import { AnchorButton } from 'components/Buttons'
 
 export default function Custom404() {
   return (

@@ -23,8 +23,8 @@ const initialPostState = {
 }
 
 export function initializePostState(post) {
-  const { sys, fields } = post
-  const id = sys?.id
+  const { sys, fields } = post || {};
+  const id = sys?.id;
   return {
     ...initialPostState,
     id,

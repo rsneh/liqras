@@ -1,13 +1,21 @@
 import { useState, cloneElement } from 'react';
 
-export default function Modal({ children, button, header = true, title = '', size = 'sm' }) {
+export default function Modal({
+  children,
+  button,
+  primaryDialogButton = null,
+  header = true,
+  title = '',
+  size = 'sm',
+  footer = true
+}) {
   const [showModal, setShowModal] = useState(false);
   return (
     <>
       {cloneElement(button, {
         onClick: (e) => setShowModal(prev => !prev)
       })}
-      {showModal ? (
+      {showModal && (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className={`relative w-full my-6 mx-auto max-w-screen-${size}`}>
@@ -26,7 +34,7 @@ export default function Modal({ children, button, header = true, title = '', siz
                     >
                       <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
                         ×
-                    </span>
+                      </span>
                     </button>
                   </div>
                 )}
@@ -44,13 +52,16 @@ export default function Modal({ children, button, header = true, title = '', siz
                   >
                     Close
                   </button>
+                  {primaryDialogButton && (
+                    cloneElement(primaryDialogButton)
+                  )}
                 </div>
               </div>
             </div>
           </div>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
-      ) : null}
+      )}
     </>
   );
 }

@@ -30,6 +30,21 @@ export function publishPostWithId(id) {
   })
 }
 
+export function deletePostWithId(id) {
+  return new Promise((resolve, reject) => {
+    fetch(`/api/post/${id}`, {
+      method: "DELETE",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" }
+    })
+      .then((res) => {
+        if (res.ok) resolve(true);
+        else reject(false);
+      })
+      .catch(error => reject(error))
+  })
+}
+
 export function uploadFeatureImageToServer(id, imageData) {
   return new Promise((resolve, reject) => {
     fetch(`/api/post/${id}/image`, {

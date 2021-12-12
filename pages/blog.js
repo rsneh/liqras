@@ -7,10 +7,9 @@ import LayoutHead from 'components/LayoutHead'
 import AuthorSidebar from 'components/AuthorSidebar'
 import BlogContextProvider from 'context/BlogContext'
 
-// Show user's blog
 export default function Blog({ user, blog }) {
-  const { fields } = blog
-  const { title, author, posts = [] } = fields
+  const { fields } = blog;
+  const { title, author, posts = [] } = fields;
   return (
     <BlogContextProvider blog={blog}>
       <LayoutHead title={title} />
@@ -23,18 +22,16 @@ export default function Blog({ user, blog }) {
         </div>
       </Layout>
     </BlogContextProvider>
-  )
+  );
 }
 
 export async function getServerSideProps({ req, res }) {
   const session = await auth0.getSession(req);
   const user = session?.user || null
   if (!user) {
-    res.writeHead(302, {
+    return res.writeHead(302, {
       Location: '/api/signin'
-    })
-    res.end()
-    return
+    }).end();
   }
 
   const blogId = convertAuthorId(user.sub)
