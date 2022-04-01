@@ -8,8 +8,6 @@ jobs:
       image: rsneh/serok:latest
       env:
         WORKSPACE: ${{ github.workspace }}
-      volumes:
-        - ${{ github.workspace }}:/app
     steps:
         - name: Log the node version
           run: |
