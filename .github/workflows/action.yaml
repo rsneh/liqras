@@ -3,6 +3,7 @@ on: [push]
 
 jobs:
   serok-code:
+    runs-on: ubuntu-latest
     container:
       image: rsneh/serok:latest
       env:
