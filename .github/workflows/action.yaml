@@ -10,3 +10,8 @@ jobs:
         WORKSPACE: ${GITHUB_WORKSPACE}
       volumes:
         - ${GITHUB_WORKSPACE}:/app
+    steps:
+         - name: Log the node version
+           run: |
+             node -v
+             cat /etc/os-release  
