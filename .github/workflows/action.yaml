@@ -1,0 +1,10 @@
+name: Serok
+
+jobs:
+  serok-code:
+    container:
+      image: rsneh/serok:latest
+      env:
+        WORKSPACE: ${GITHUB_WORKSPACE}
+      volumes:
+        - ${GITHUB_WORKSPACE}:/app
