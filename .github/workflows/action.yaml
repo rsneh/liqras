@@ -1,4 +1,5 @@
 name: Serok
+on: [push]
 
 jobs:
   serok-code:
