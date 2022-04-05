@@ -6,8 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: rsneh/serok:latest
-      env:
-        WORKSPACE: ${{ github.workspace }}
     steps:
         - name: Log the node version
           run: |
