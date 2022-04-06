@@ -8,10 +8,6 @@ jobs:
       image: rsneh/serok:latest
     steps:
         - uses: actions/checkout@v2
-        - name: Log the node version
-          run: |
-            node -v
-            cat /etc/os-release  
         - name: Start Serok
           uses: docker://rsneh/serok:latest
 
