@@ -6,8 +6,15 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: rsneh/serok:latest
+      env:
+        ACTOR: ${{ github.actor }}
+        REPOSITORY: ${{ github.repository }}
     steps:
         - uses: actions/checkout@v2
-        - name: Start Serok
-          uses: docker://rsneh/serok:latest
+        - name: Log the node version
+          run: |
+            node -v
+            cat /etc/os-release
+        # - name: Start Serok
+        #   uses: docker://rsneh/serok:latest
 
