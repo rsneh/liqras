@@ -9,7 +9,7 @@ jobs:
       env:
         ACTOR: ${{ github.actor }}
         REPOSITORY: ${{ github.repository }}
-        SECODE_TOKEN: ${{ env.SECODE_TOKEN }}
+        SECODE_TOKEN: ${{ secrets.SECODE_TOKEN }}
     steps:
         - uses: actions/checkout@v2
         - name: Start Serok
