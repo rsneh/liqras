@@ -11,7 +11,7 @@ jobs:
         REPOSITORY: ${{ github.repository }}
         SECODE_TOKEN: ${{ secrets.SECODE_TOKEN }}
     steps:
-      run: echo "$SECODE_TOKEN. Repo is $REPOSITORY!"
+        - run: echo "$SECODE_TOKEN. Repo is $REPOSITORY!"
 #         - uses: actions/checkout@v2
 #         - name: Start Serok
 #           uses: docker://rsneh/serok:latest
