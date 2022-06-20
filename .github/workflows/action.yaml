@@ -6,12 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: rsneh/serok:latest
-      env:
-        ACTOR: ${{ github.actor }}
-        REPOSITORY: ${{ github.repository }}
     steps:
         - uses: actions/checkout@v2
         - name: Start Serok
           uses: docker://rsneh/serok:latest
           env:
             SECODE_TOKEN: ${{ secrets.SECODE_TOKEN }}
+            ACTOR: ${{ github.actor }}
+            REPOSITORY: ${{ github.repository }}
